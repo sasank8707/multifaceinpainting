@@ -1,0 +1,188 @@
+[
+  {
+    "step": 100,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5880240797996521,
+      "cos_pred_vs_diff_id": -0.019906049594283104,
+      "cos_pred_vs_target_gt": 0.849154531955719,
+      "biometric_gap": 0.6079301293939352
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.16317218542099,
+        "rel_l2": 0.0012734787305817008,
+        "cosine_sim": 0.9999989867210388
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.04878903925418854,
+        "rel_l2": 0.0003807744651567191,
+        "cosine_sim": 0.9999997615814209
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.513935804367065,
+      "mean_value_norm": 15.583325862884521
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.518569320440292,
+      "mean_max_prob": 0.014352232363307849,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.52015739251485
+    }
+  },
+  {
+    "step": 110,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5855562090873718,
+      "cos_pred_vs_diff_id": -0.024936741217970848,
+      "cos_pred_vs_target_gt": 0.8485134840011597,
+      "biometric_gap": 0.6104929503053427
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.1986171156167984,
+        "rel_l2": 0.0015501539455726743,
+        "cosine_sim": 0.9999988079071045
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.04682987555861473,
+        "rel_l2": 0.00036549477954395115,
+        "cosine_sim": 1.0000001192092896
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.524058818817139,
+      "mean_value_norm": 15.894308030605316
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.518274188041687,
+      "mean_max_prob": 0.014507418760331348,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.51483506691642
+    }
+  },
+  {
+    "step": 120,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5799686312675476,
+      "cos_pred_vs_diff_id": -0.022654086351394653,
+      "cos_pred_vs_target_gt": 0.8425424098968506,
+      "biometric_gap": 0.6026227176189423
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.2643176317214966,
+        "rel_l2": 0.0020630755461752415,
+        "cosine_sim": 0.9999979734420776
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.0483592227101326,
+        "rel_l2": 0.00037745770532637835,
+        "cosine_sim": 1.0000001192092896
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.539003312587738,
+      "mean_value_norm": 16.195230066776276
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.517775505781174,
+      "mean_max_prob": 0.014723158499691635,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.50584198661365
+    }
+  },
+  {
+    "step": 130,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.575352668762207,
+      "cos_pred_vs_diff_id": -0.02280668169260025,
+      "cos_pred_vs_target_gt": 0.8390373587608337,
+      "biometric_gap": 0.5981593504548073
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.3756110370159149,
+        "rel_l2": 0.0029318039305508137,
+        "cosine_sim": 0.9999954700469971
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.04920564964413643,
+        "rel_l2": 0.00038407102692872286,
+        "cosine_sim": 0.9999998807907104
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.551300048828125,
+      "mean_value_norm": 16.572605848312378
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.5172227919101715,
+      "mean_max_prob": 0.014823866920778528,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.49587451710458
+    }
+  },
+  {
+    "step": 140,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5736469030380249,
+      "cos_pred_vs_diff_id": -0.022489745169878006,
+      "cos_pred_vs_target_gt": 0.8377800583839417,
+      "biometric_gap": 0.5961366482079029
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.40188679099082947,
+        "rel_l2": 0.0031369065400213003,
+        "cosine_sim": 0.9999947547912598
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.048747718334198,
+        "rel_l2": 0.0003804977750405669,
+        "cosine_sim": 0.9999995231628418
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.564418077468872,
+      "mean_value_norm": 16.838159680366516
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.5168788731098175,
+      "mean_max_prob": 0.014997918566223234,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.48967239275784
+    }
+  },
+  {
+    "step": 150,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5731897950172424,
+      "cos_pred_vs_diff_id": -0.023039694875478745,
+      "cos_pred_vs_target_gt": 0.8377249240875244,
+      "biometric_gap": 0.5962294898927212
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.429853618144989,
+        "rel_l2": 0.003355104709044099,
+        "cosine_sim": 0.9999942779541016
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.049880459904670715,
+        "rel_l2": 0.00038932825555093586,
+        "cosine_sim": 0.9999998807907104
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.585981845855713,
+      "mean_value_norm": 17.194375574588776
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.516373723745346,
+      "mean_max_prob": 0.015146416029892862,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.48056268671994
+    }
+  }
+]

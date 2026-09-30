@@ -1,0 +1,66 @@
+# Model Configuration for Multi-Reference Identity-Preserving Inpainting
+
+model:
+  name: "HybridTransformerDiffusionInpainter"
+  version: "1.0.0"
+  
+device:
+  preferred: "auto" # "auto", "cuda", "cpu"
+  mixed_precision: true # fp16 on CUDA, fp32 on CPU
+  benchmark: true
+
+resolution:
+  internal_model_resolution: [256, 256] # Model internal processing resolution [H, W]
+  preserve_original_dimensions: true
+  roi_expansion_margin: 0.35 # Margin around mask bounding box for ROI extraction
+
+components:
+  coarse_unet:
+    enabled: true
+    in_channels: 4 # 3 RGB + 1 Mask
+    out_channels: 3
+    base_channels: 64
+    channel_multipliers: [1, 2, 4, 8]
+    use_laplace_loss: true
+    laplace_kernel_size: 5
+    laplace_weight: 1.0 # gamma in Wei et al. 2019
+    region_weight_m: 5.0 # blur region multiplier m in Wei et al. 2019
+
+  reference_scorer: # O1 Retrieve
+    enabled: true
+    pose_weight: 0.35
+    quality_weight: 0.25
+    visibility_weight: 0.40
+    top_k_references: 3
+
+  regional_fusion_transformer: # O2 Fuse
+    enabled: true
+    token_dim: 512
+    num_heads: 8
+    num_layers: 4
+    patch_size: 16
+    dropout: 0.1
+    mask_conditioned_attention: true
+
+  diffusion_backbone:
+    scheduler: "ddim"
+    num_inference_steps: 25
+    guidance_scale: 7.5
+    identity_conditioning_scale: 1.0
+
+  refinement_and_blending:
+    mode: "laplacian_pyramid" # "laplacian_pyramid", "poisson", "alpha_blend"
+    pyramid_levels: 4
+    feather_radius: 3
+    strict_unmasked_pixel_preservation: true
+
+  verifier: # O3 Verify (Inference-time reranker only, NO training gradients)
+    enabled: true
+    candidates_k: 1 # K=1 during early development, K=8-16 during benchmark
+    identity_weight: 0.6 # lambda in ArgMax(lambda * ID + (1-lambda) * Quality)
+    quality_weight: 0.4
+    held_out_matcher: "ArcFace-R100-MS1MV3"
+    rejection_filters:
+      face_detection_required: true
+      min_identity_threshold: 0.35
+      max_landmark_error_px: 25.0

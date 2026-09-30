@@ -1,0 +1,71 @@
+# ==============================================================================
+# Git Ignore Configuration for Multi-Face Inpainting & Restoration System
+# ==============================================================================
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Trained Checkpoints & Weights (Large files > 100MB, preserved locally)
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.onnx
+models/pretrained/*.onnx
+
+# Datasets and Processed Data
+data/
+datasets/
+*.h5
+*.hdf5
+*.npz
+
+# Generated Visualizations, Output Runs & Diagnostics
+evaluation/visualizations*
+evaluation/visualization*
+evaluation/diagnostics*
+evaluation/outputs*
+evaluation/ablations*
+evaluation/web_uploads*
+evaluation/reports/**/*.png
+user_tests/**/output/
+user_tests/**/outputs/
+output/
+outputs/
+
+# Distribution Archives & Packages
+dist/
+*.zip
+*.tar.gz
+*.rar
+
+# Logs & Temporary Files
+logs/
+*.log
+*.tmp
+scratch/
+scratch_*
+debug_browser.py
+
+# IDE & OS Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large Base Paper PDF (>25MB, preserved locally)
+*(Base Paper)*.pdf

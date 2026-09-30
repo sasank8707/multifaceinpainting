@@ -1,0 +1,375 @@
+{
+  "experiment": {
+    "name": "Phase 7 First Real End-to-End Reconstruction Experiment",
+    "identity_id": "3111",
+    "target_image": "7367.jpg",
+    "reference_images": [
+      "13401.jpg",
+      "23058.jpg",
+      "23414.jpg"
+    ],
+    "seed": 42,
+    "num_inference_steps": 5,
+    "guidance_scale": 7.5,
+    "working_resolution": [
+      512,
+      512
+    ],
+    "original_resolution": [
+      1024,
+      1024
+    ],
+    "device": "cpu",
+    "total_runtime_seconds": 242.56283807754517,
+    "pipeline_runtime_seconds": 209.48842072486877
+  },
+  "mask_profile": {
+    "shape": [
+      1024,
+      1024
+    ],
+    "mask_pixels": 84250,
+    "total_pixels": 1048576,
+    "image_coverage": 0.08034706115722656,
+    "face_area_coverage": 0.19977899818835423,
+    "face_bbox": [
+      173,
+      267,
+      795,
+      945
+    ],
+    "mask_bbox": [
+      486,
+      926,
+      298,
+      562
+    ]
+  },
+  "reference_scoring_O1": {
+    "task_mode": "MODE_1_FACIAL_INPAINTING",
+    "identity_conditioning_enabled": true,
+    "identity_status": [
+      {
+        "ref_index": 0,
+        "is_valid": true,
+        "target_id": "3111",
+        "ref_id": "3111",
+        "rejection_reason": null
+      },
+      {
+        "ref_index": 1,
+        "is_valid": true,
+        "target_id": "3111",
+        "ref_id": "3111",
+        "rejection_reason": null
+      },
+      {
+        "ref_index": 2,
+        "is_valid": true,
+        "target_id": "3111",
+        "ref_id": "3111",
+        "rejection_reason": null
+      }
+    ],
+    "scoring_weights": {
+      "pose": 0.3,
+      "quality": 0.25,
+      "visibility": 0.3,
+      "overlap": 0.15
+    },
+    "num_references_evaluated": 3,
+    "components": [
+      {
+        "component_id": 0,
+        "category": "PURE_FACIAL",
+        "affected_landmarks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          11,
+          12,
+          13,
+          19,
+          20,
+          22,
+          26,
+          32,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          47,
+          48,
+          49,
+          51,
+          57,
+          59,
+          60,
+          61,
+          62,
+          64,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          106,
+          112,
+          114,
+          115,
+          119,
+          120,
+          121,
+          122,
+          125,
+          126,
+          128,
+          129,
+          131,
+          133,
+          134,
+          135,
+          136,
+          140,
+          141,
+          142,
+          146,
+          149,
+          150,
+          154,
+          155,
+          164,
+          165,
+          166,
+          167,
+          169,
+          170,
+          173,
+          174,
+          176,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          188,
+          189,
+          190,
+          191,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          209,
+          210,
+          211,
+          212,
+          214,
+          216,
+          217,
+          218,
+          219,
+          220,
+          230,
+          231,
+          232,
+          233,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          248,
+          250,
+          274,
+          281,
+          354,
+          370,
+          419,
+          461,
+          462
+        ],
+        "identity_conditioning_enabled": true,
+        "score_breakdown": {
+          "ref_0": {
+            "pose_score": 0.7019,
+            "quality_score": 0.7242,
+            "visibility_score": 0.2215,
+            "overlap_score": 1.0,
+            "composite_score": 0.6081,
+            "is_valid_identity": true
+          },
+          "ref_1": {
+            "pose_score": 0.0856,
+            "quality_score": 0.4973,
+            "visibility_score": 0.2215,
+            "overlap_score": 1.0,
+            "composite_score": 0.3665,
+            "is_valid_identity": true
+          },
+          "ref_2": {
+            "pose_score": 0.6031,
+            "quality_score": 0.5421,
+            "visibility_score": 0.2215,
+            "overlap_score": 1.0,
+            "composite_score": 0.5329,
+            "is_valid_identity": true
+          }
+        },
+        "normalized_weights": {
+          "ref_0": 0.4034,
+          "ref_1": 0.2431,
+          "ref_2": 0.3535
+        },
+        "ranked_references": [
+          {
+            "name": "ref_0",
+            "score": 0.6081,
+            "weight": 0.4034
+          },
+          {
+            "name": "ref_2",
+            "score": 0.5329,
+            "weight": 0.3535
+          },
+          {
+            "name": "ref_1",
+            "score": 0.3665,
+            "weight": 0.2431
+          }
+        ],
+        "top_k_selected": [
+          "ref_0",
+          "ref_2",
+          "ref_1"
+        ]
+      }
+    ],
+    "global_scores": {
+      "ref_0": 0.6081,
+      "ref_1": 0.3665,
+      "ref_2": 0.5329
+    },
+    "global_normalized_weights": {
+      "ref_0": 0.4034,
+      "ref_1": 0.2431,
+      "ref_2": 0.3535
+    },
+    "global_ranked_references": [
+      {
+        "name": "ref_0",
+        "score": 0.6081,
+        "weight": 0.4034
+      },
+      {
+        "name": "ref_2",
+        "score": 0.5329,
+        "weight": 0.3535
+      },
+      {
+        "name": "ref_1",
+        "score": 0.3665,
+        "weight": 0.2431
+      }
+    ],
+    "global_top_k_selected": [
+      "ref_0",
+      "ref_2",
+      "ref_1"
+    ]
+  },
+  "unmasked_invariance": {
+    "passed": true,
+    "max_unmasked_diff": 0.0,
+    "violated_pixels": 0
+  },
+  "quantitative_metrics": {
+    "final_diffusion": {
+      "masked_mae": 47.45016419386746,
+      "masked_rmse": 66.23091818956938,
+      "masked_psnr_db": 11.709588090307104,
+      "masked_crop_ssim": 0.5971831294784438,
+      "sobel_gradient_error": 0.11071543395519257,
+      "laplacian_5x5_error": 0.12537026405334473
+    },
+    "coarse_baseline": {
+      "masked_mae": 98.52162215628091,
+      "masked_rmse": 115.09336431092592,
+      "masked_psnr_db": 6.909797905116921,
+      "masked_crop_ssim": 0.43030376308919244,
+      "sobel_gradient_error": 0.07831678539514542,
+      "laplacian_5x5_error": 0.23592643439769745
+    }
+  },
+  "identity_metrics_arcface": {
+    "cosine_sim_recon_vs_target": 0.999952495098114,
+    "cosine_sim_coarse_vs_target": 0.9957409501075745,
+    "cosine_sim_recon_vs_ref1": 0.9949513077735901,
+    "cosine_sim_recon_vs_ref2": 0.9983402490615845,
+    "cosine_sim_recon_vs_ref3": 0.9917463064193726,
+    "baseline_target_vs_ref1": 0.9945179224014282,
+    "baseline_target_vs_ref2": 0.9985697269439697,
+    "baseline_target_vs_ref3": 0.9913623929023743
+  },
+  "visual_acceptance_assessment": {
+    "q1_is_missing_region_reconstructed": true,
+    "q2_are_recognizable_facial_structures_present": true,
+    "q3_is_result_merely_smooth_texture": false,
+    "q4_are_visible_placeholder_artifacts_present": false,
+    "q5_are_boundaries_anatomically_coherent": true,
+    "q6_does_reconstruction_resemble_identity": true
+  }
+}

@@ -1,0 +1,9 @@
+Place authentic, non-fabricated naturally damaged face images here:
+- target.jpg (naturally damaged face: scar, burn, lesion, scratch)
+- ref1.jpg   (reference photo of the same subject, clean/undamaged)
+- ref2.jpg   (optional reference photo)
+- ref3.jpg   (optional reference photo)
+
+DO NOT PROVIDE A MASK.
+The detector must generate it automatically.
+Real natural-damage validation is pending input data.

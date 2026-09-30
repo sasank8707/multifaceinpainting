@@ -1,0 +1,10 @@
+{
+  "checkpoint_path": "C:\\Users\\sasan\\Desktop\\multifaceinpainting\\checkpoints\\decoupled_identity_attention\\smoke_step_2.pt",
+  "reload_verified": true,
+  "reload_max_abs_diff": 0.0,
+  "reload_l2_diff": 0.0,
+  "lambda0_vanilla_equivalence_verified": true,
+  "lambda0_max_abs_diff": 0.0,
+  "pre_vs_post_train_epsilon_l2": 0.00013239866530057043,
+  "pre_vs_post_train_epsilon_cos": 1.0000001192092896
+}

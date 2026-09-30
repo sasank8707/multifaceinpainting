@@ -1,0 +1,56 @@
+# Training Configuration for Multi-Reference Identity-Preserving Inpainting
+
+training:
+  experiment_name: "exp_baseline_and_hybrid_fusion"
+  random_seed: 42
+  num_workers: 2
+  
+optimizer:
+  name: "AdamW"
+  lr: 0.0001
+  betas: [0.9, 0.999]
+  weight_decay: 0.01
+  grad_clip_norm: 1.0
+
+scheduler:
+  name: "cosine_annealing"
+  warmup_ratio: 0.05
+  min_lr: 0.000001
+
+loss_weights:
+  # L_total = L_rec + lambda1*L_perc + lambda2*L_id + lambda3*L_landmark + lambda4*L_edge + lambda5*L_mask + lambda6*L_boundary
+  rec: 1.0           # Reconstruction Smooth L1 loss
+  mask: 5.0          # Mask-region specific reconstruction loss
+  edge: 1.0          # Laplace 2nd-order differential edge loss (Wei et al. 2019)
+  perceptual: 0.2    # LPIPS / VGG perceptual loss
+  identity: 0.5      # Cosine distance on training identity extractor
+  landmark: 0.1      # Facial landmark L2 coordinate error
+  boundary: 2.0      # Transition boundary continuity loss
+
+stages:
+  stage1_coarse_unet:
+    epochs: 30
+    batch_size: 16
+    lr: 0.0002
+    active_losses: ["rec", "mask", "edge"]
+  stage2_reference_scorer:
+    epochs: 15
+    batch_size: 32
+    lr: 0.0001
+    active_losses: ["cross_entropy_retrieval"]
+  stage3_transformer_fusion:
+    epochs: 25
+    batch_size: 16
+    lr: 0.0001
+    active_losses: ["feature_align", "identity"]
+  stage4_diffusion_adapter:
+    epochs: 40
+    batch_size: 8
+    lr: 0.00005
+    active_losses: ["diffusion_noise_mse", "identity"]
+
+hardware_optimization:
+  mixed_precision: "fp16" # "fp16", "bf16", "no"
+  gradient_accumulation_steps: 2
+  gradient_checkpointing: true
+  use_sdpa: true

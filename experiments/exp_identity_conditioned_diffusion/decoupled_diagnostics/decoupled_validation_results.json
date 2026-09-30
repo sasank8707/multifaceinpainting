@@ -1,0 +1,287 @@
+{
+  "timestamp": "2026-09-20 15:16:31",
+  "runtime_seconds": 186.73924255371094,
+  "parameter_counts": {
+    "num_processors": 16,
+    "k_id_parameters": 6389760,
+    "v_id_parameters": 6389760,
+    "total_identity_parameters": 12779520
+  },
+  "gate_results": {
+    "gate1_lambda0_vanilla_equivalence": true,
+    "gate2_pure_reference_t_fused": true,
+    "gate3_measurable_kv_differences": true,
+    "gate4_measurable_epsilon_sensitivity": true,
+    "gate5_target_anti_leakage": true,
+    "gate6_mask_awareness": true,
+    "gate7_text_path_integrity": true,
+    "gate8_no_nan_inf": true,
+    "gate9_no_pixel_copying": true,
+    "gate10_phase4_tests_passing": true,
+    "all_gates_passed": true
+  },
+  "gate1_details": {
+    "max_abs_diff": 0.0,
+    "l2_diff": 0.0,
+    "cosine_sim": 0.9999998807907104
+  },
+  "gate4_sensitivity_details": {
+    "ref_A_vs_ref_B": {
+      "name": "Ref A vs Ref B (Same ID)",
+      "l2_diff": 0.14529547095298767,
+      "rel_l2": 0.0011259705061092973,
+      "cosine_sim": 0.9999991655349731,
+      "masked_mean_diff": 0.0013839328894391656,
+      "unmasked_mean_diff": 0.0008387520210817456,
+      "masked_ratio": 1.6499708554451675
+    },
+    "ref_A_vs_ref_C": {
+      "name": "Ref A vs Ref C (Same ID)",
+      "l2_diff": 0.09337209165096283,
+      "rel_l2": 0.0007235891534946859,
+      "cosine_sim": 0.9999995827674866,
+      "masked_mean_diff": 0.0008983157458715141,
+      "unmasked_mean_diff": 0.0005286674131639302,
+      "masked_ratio": 1.6991755719152841
+    },
+    "ref_A_vs_diff_id": {
+      "name": "Ref A vs Different ID (3616)",
+      "l2_diff": 0.16759607195854187,
+      "rel_l2": 0.0012987895170226693,
+      "cosine_sim": 0.9999991655349731,
+      "masked_mean_diff": 0.0015050724614411592,
+      "unmasked_mean_diff": 0.0009614723967388272,
+      "masked_ratio": 1.565366632344066
+    },
+    "ref_B_vs_diff_id": {
+      "name": "Ref B vs Different ID (3616)",
+      "l2_diff": 0.20143581926822662,
+      "rel_l2": 0.001561342622153461,
+      "cosine_sim": 0.9999986290931702,
+      "masked_mean_diff": 0.0019341891165822744,
+      "unmasked_mean_diff": 0.0011811600998044014,
+      "masked_ratio": 1.6375195383819579
+    }
+  },
+  "gate5_target_leakage_details": {
+    "l2_diff": 0.0,
+    "cosine_sim": 1.0000004768371582
+  },
+  "attention_diagnostics": {
+    "mean_entropy": 5.506313681602478,
+    "mean_max_prob": 0.017497168097179383,
+    "mean_key_norm": 5.480246931314468,
+    "mean_value_norm": 5.470398366451263,
+    "mean_logit_std": 0.4140615100041032,
+    "per_layer": [
+      {
+        "id_key_norm": 3.481326103210449,
+        "id_value_norm": 3.5625433921813965,
+        "logit_mean": -0.10366222262382507,
+        "logit_std": 0.3248293995857239,
+        "logit_max": 1.2468360662460327,
+        "logit_min": -1.4849834442138672,
+        "entropy": 5.527565002441406,
+        "max_prob": 0.012026301585137844,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "down_blocks.0.attentions.0.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 3.6474359035491943,
+        "id_value_norm": 3.587693214416504,
+        "logit_mean": 0.03576603904366493,
+        "logit_std": 0.21074463427066803,
+        "logit_max": 1.445540189743042,
+        "logit_min": -1.0125269889831543,
+        "entropy": 5.536618232727051,
+        "max_prob": 0.011161871254444122,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "down_blocks.0.attentions.1.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 5.241225719451904,
+        "id_value_norm": 5.127481937408447,
+        "logit_mean": -0.07732831686735153,
+        "logit_std": 0.38478511571884155,
+        "logit_max": 1.912966251373291,
+        "logit_min": -1.9669374227523804,
+        "entropy": 5.514787673950195,
+        "max_prob": 0.013634479604661465,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "down_blocks.1.attentions.0.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 5.201969146728516,
+        "id_value_norm": 5.1463494300842285,
+        "logit_mean": -0.06043221428990364,
+        "logit_std": 0.5204651951789856,
+        "logit_max": 1.7251659631729126,
+        "logit_min": -2.088660717010498,
+        "entropy": 5.518321514129639,
+        "max_prob": 0.021279269829392433,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "down_blocks.1.attentions.1.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 7.5404205322265625,
+        "id_value_norm": 7.279090881347656,
+        "logit_mean": -0.0626484602689743,
+        "logit_std": 0.44909098744392395,
+        "logit_max": 1.4878277778625488,
+        "logit_min": -1.4854267835617065,
+        "entropy": 5.517956733703613,
+        "max_prob": 0.012255582958459854,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "down_blocks.2.attentions.0.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 7.336766242980957,
+        "id_value_norm": 7.2928853034973145,
+        "logit_mean": 0.03833252936601639,
+        "logit_std": 0.45682409405708313,
+        "logit_max": 2.3826539516448975,
+        "logit_min": -2.1937661170959473,
+        "entropy": 5.505526065826416,
+        "max_prob": 0.013843609020113945,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "down_blocks.2.attentions.1.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 7.045735836029053,
+        "id_value_norm": 7.2927751541137695,
+        "logit_mean": -0.20924359560012817,
+        "logit_std": 0.4740462899208069,
+        "logit_max": 2.2144699096679688,
+        "logit_min": -2.5509958267211914,
+        "entropy": 5.489273548126221,
+        "max_prob": 0.01865197718143463,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.1.attentions.0.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 7.238996505737305,
+        "id_value_norm": 7.2716169357299805,
+        "logit_mean": -0.17446503043174744,
+        "logit_std": 0.5741806030273438,
+        "logit_max": 2.4445643424987793,
+        "logit_min": -2.697035312652588,
+        "entropy": 5.474414348602295,
+        "max_prob": 0.022296970710158348,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.1.attentions.1.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 7.405765056610107,
+        "id_value_norm": 7.304068565368652,
+        "logit_mean": -0.12810833752155304,
+        "logit_std": 0.5710757970809937,
+        "logit_max": 2.5813064575195312,
+        "logit_min": -2.6785202026367188,
+        "entropy": 5.47043514251709,
+        "max_prob": 0.032584741711616516,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.1.attentions.2.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 5.197000980377197,
+        "id_value_norm": 5.097601890563965,
+        "logit_mean": 0.17522341012954712,
+        "logit_std": 0.584339439868927,
+        "logit_max": 3.607975482940674,
+        "logit_min": -2.445549964904785,
+        "entropy": 5.4502177238464355,
+        "max_prob": 0.03571794182062149,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.2.attentions.0.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 5.167766571044922,
+        "id_value_norm": 5.153192520141602,
+        "logit_mean": -0.12945051491260529,
+        "logit_std": 0.4742950201034546,
+        "logit_max": 2.3772847652435303,
+        "logit_min": -2.304088592529297,
+        "entropy": 5.492282390594482,
+        "max_prob": 0.024239949882030487,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.2.attentions.1.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 5.131505966186523,
+        "id_value_norm": 5.149494647979736,
+        "logit_mean": -0.13277877867221832,
+        "logit_std": 0.4382915198802948,
+        "logit_max": 1.88368558883667,
+        "logit_min": -2.000051498413086,
+        "entropy": 5.498579502105713,
+        "max_prob": 0.018859142437577248,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.2.attentions.2.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 3.5398221015930176,
+        "id_value_norm": 3.7220308780670166,
+        "logit_mean": -0.06798017770051956,
+        "logit_std": 0.19206124544143677,
+        "logit_max": 1.1904163360595703,
+        "logit_min": -0.971447229385376,
+        "entropy": 5.530618190765381,
+        "max_prob": 0.012059452943503857,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.3.attentions.0.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 3.666494607925415,
+        "id_value_norm": 3.7290444374084473,
+        "logit_mean": 0.050106555223464966,
+        "logit_std": 0.23905988037586212,
+        "logit_max": 1.053606390953064,
+        "logit_min": -0.7648106813430786,
+        "entropy": 5.536559581756592,
+        "max_prob": 0.008185122162103653,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.3.attentions.1.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 3.576052665710449,
+        "id_value_norm": 3.5328762531280518,
+        "logit_mean": -0.025490950793027878,
+        "logit_std": 0.1985148936510086,
+        "logit_max": 0.7552052736282349,
+        "logit_min": -0.7247495651245117,
+        "entropy": 5.536230564117432,
+        "max_prob": 0.00800990965217352,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "up_blocks.3.attentions.2.transformer_blocks.0.attn2.processor"
+      },
+      {
+        "id_key_norm": 7.265666961669922,
+        "id_value_norm": 7.277628421783447,
+        "logit_mean": 0.02278169058263302,
+        "logit_std": 0.5323800444602966,
+        "logit_max": 1.7317554950714111,
+        "logit_min": -1.9793304204940796,
+        "entropy": 5.5016326904296875,
+        "max_prob": 0.015148366801440716,
+        "has_nan": false,
+        "has_inf": false,
+        "layer_name": "mid_block.attentions.0.transformer_blocks.0.attn2.processor"
+      }
+    ]
+  }
+}

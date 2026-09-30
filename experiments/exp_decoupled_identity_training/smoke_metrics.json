@@ -1,0 +1,39 @@
+{
+  "smoke_history": [
+    {
+      "step": 0,
+      "loss": 0.023278608918190002,
+      "mean_k_grad_norm": 1.006352472643357e-05,
+      "mean_v_grad_norm": 0.00025023282796610147,
+      "max_param_change": 9.994581341743469e-05,
+      "frozen_grad_detected": false,
+      "step_time_seconds": 105.49327778816223,
+      "memory_rss_mb": 4778.23046875,
+      "identity_id": "3901"
+    },
+    {
+      "step": 1,
+      "loss": 0.008843640796840191,
+      "mean_k_grad_norm": 8.242272215852608e-06,
+      "mean_v_grad_norm": 0.00021360277241910808,
+      "max_param_change": 0.0001999828964471817,
+      "frozen_grad_detected": false,
+      "step_time_seconds": 99.88560628890991,
+      "memory_rss_mb": 4803.67578125,
+      "identity_id": "3901"
+    }
+  ],
+  "avg_step_time_seconds": 102.68944203853607,
+  "runtime_projections_seconds": {
+    "steps_100": 10268.944203853607,
+    "steps_500": 51344.721019268036,
+    "steps_1000": 102689.44203853607,
+    "steps_5000": 513447.21019268036
+  },
+  "runtime_projections_hours": {
+    "steps_100": 2.8524845010704465,
+    "steps_500": 14.262422505352232,
+    "steps_1000": 28.524845010704464,
+    "steps_5000": 142.6242250535223
+  }
+}

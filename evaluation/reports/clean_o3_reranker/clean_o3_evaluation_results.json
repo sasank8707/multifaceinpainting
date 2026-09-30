@@ -1,0 +1,242 @@
+{
+  "benchmark": "Clean O3 Verifier-Aware Sampling Reranker",
+  "protocol": {
+    "target_subject": "7367",
+    "references": [
+      "13401",
+      "23058",
+      "23414"
+    ],
+    "occlusion_severity": "25pct",
+    "candidate_seeds": [
+      42,
+      43,
+      44
+    ],
+    "inference_steps": 50,
+    "guidance_scale": 7.5,
+    "identity_scale": 0.1,
+    "verifier_matcher": "InceptionResnetV1_vggface2",
+    "verifier_quality": "BRISQUE_piq",
+    "w_identity": 0.6,
+    "w_quality": 0.4
+  },
+  "checkpoints": {
+    "step_150": {
+      "checkpoint_name": "step_150",
+      "candidate_generation_runtimes": [
+        0.23,
+        0.18,
+        0.19
+      ],
+      "rerank_runtime_seconds": 1.1006,
+      "rerank_selection": {
+        "winning_index": 1,
+        "winning_seed": 42,
+        "winning_score": 0.7922,
+        "winner_details": {
+          "seed": 42,
+          "s_identity_raw": 0.6537,
+          "s_identity_norm": 0.6537,
+          "s_quality_norm": 1.0,
+          "brisque_raw": -2.1158,
+          "s_joint": 0.7922,
+          "candidate_index": 1
+        },
+        "all_candidates": [
+          {
+            "seed": 42,
+            "s_identity_raw": 0.6537,
+            "s_identity_norm": 0.6537,
+            "s_quality_norm": 1.0,
+            "brisque_raw": -2.1158,
+            "s_joint": 0.7922,
+            "candidate_index": 1
+          },
+          {
+            "seed": 43,
+            "s_identity_raw": 0.4817,
+            "s_identity_norm": 0.4817,
+            "s_quality_norm": 1.0,
+            "brisque_raw": -0.7669,
+            "s_joint": 0.689,
+            "candidate_index": 2
+          },
+          {
+            "seed": 44,
+            "s_identity_raw": 0.5788,
+            "s_identity_norm": 0.5788,
+            "s_quality_norm": 1.0,
+            "brisque_raw": -1.397,
+            "s_joint": 0.7473,
+            "candidate_index": 3
+          }
+        ],
+        "protocol": {
+          "matcher": "InceptionResnetV1_vggface2",
+          "quality_metric": "BRISQUE_piq",
+          "w_identity": 0.6,
+          "w_quality": 0.4,
+          "k_candidates": 3,
+          "ground_truth_isolated": true
+        }
+      },
+      "winning_candidate_held_out_metrics": {
+        "invariance": {
+          "passed": true,
+          "max_difference": 0.0,
+          "violated_pixels": 0
+        },
+        "biometrics": {
+          "cos_recon_vs_ref_mean": 0.4588,
+          "cos_recon_vs_target_gt": 0.6686,
+          "cos_recon_vs_diff_id": -0.0578,
+          "biometric_identity_gap": 0.5166
+        },
+        "reconstruction": {
+          "psnr": 15.84,
+          "ssim": 0.6834,
+          "mae": 31.9534,
+          "rmse": 41.1581,
+          "sobel_error": 0.0712,
+          "laplacian_error": 0.2945
+        }
+      },
+      "baseline_single_shot_metrics": {
+        "invariance": {
+          "passed": true,
+          "max_difference": 0.0,
+          "violated_pixels": 0
+        },
+        "biometrics": {
+          "cos_recon_vs_ref_mean": 0.4588,
+          "cos_recon_vs_target_gt": 0.6686,
+          "cos_recon_vs_diff_id": -0.0578,
+          "biometric_identity_gap": 0.5166
+        },
+        "reconstruction": {
+          "psnr": 15.84,
+          "ssim": 0.6834,
+          "mae": 31.9534,
+          "rmse": 41.1581,
+          "sobel_error": 0.0712,
+          "laplacian_error": 0.2945
+        }
+      },
+      "delta_clean_o3_vs_baseline": {
+        "delta_cos_ref": 0.0,
+        "delta_biometric_gap": 0.0,
+        "delta_psnr": 0.0,
+        "delta_ssim": 0.0
+      }
+    },
+    "step_500": {
+      "checkpoint_name": "step_500",
+      "candidate_generation_runtimes": [
+        0.19,
+        0.2,
+        0.21
+      ],
+      "rerank_runtime_seconds": 1.0042,
+      "rerank_selection": {
+        "winning_index": 1,
+        "winning_seed": 42,
+        "winning_score": 0.7922,
+        "winner_details": {
+          "seed": 42,
+          "s_identity_raw": 0.6537,
+          "s_identity_norm": 0.6537,
+          "s_quality_norm": 1.0,
+          "brisque_raw": -2.1158,
+          "s_joint": 0.7922,
+          "candidate_index": 1
+        },
+        "all_candidates": [
+          {
+            "seed": 42,
+            "s_identity_raw": 0.6537,
+            "s_identity_norm": 0.6537,
+            "s_quality_norm": 1.0,
+            "brisque_raw": -2.1158,
+            "s_joint": 0.7922,
+            "candidate_index": 1
+          },
+          {
+            "seed": 43,
+            "s_identity_raw": 0.4817,
+            "s_identity_norm": 0.4817,
+            "s_quality_norm": 1.0,
+            "brisque_raw": -0.7669,
+            "s_joint": 0.689,
+            "candidate_index": 2
+          },
+          {
+            "seed": 44,
+            "s_identity_raw": 0.5788,
+            "s_identity_norm": 0.5788,
+            "s_quality_norm": 1.0,
+            "brisque_raw": -1.397,
+            "s_joint": 0.7473,
+            "candidate_index": 3
+          }
+        ],
+        "protocol": {
+          "matcher": "InceptionResnetV1_vggface2",
+          "quality_metric": "BRISQUE_piq",
+          "w_identity": 0.6,
+          "w_quality": 0.4,
+          "k_candidates": 3,
+          "ground_truth_isolated": true
+        }
+      },
+      "winning_candidate_held_out_metrics": {
+        "invariance": {
+          "passed": true,
+          "max_difference": 0.0,
+          "violated_pixels": 0
+        },
+        "biometrics": {
+          "cos_recon_vs_ref_mean": 0.4588,
+          "cos_recon_vs_target_gt": 0.6686,
+          "cos_recon_vs_diff_id": -0.0578,
+          "biometric_identity_gap": 0.5166
+        },
+        "reconstruction": {
+          "psnr": 15.84,
+          "ssim": 0.6834,
+          "mae": 31.9534,
+          "rmse": 41.1581,
+          "sobel_error": 0.0712,
+          "laplacian_error": 0.2945
+        }
+      },
+      "baseline_single_shot_metrics": {
+        "invariance": {
+          "passed": true,
+          "max_difference": 0.0,
+          "violated_pixels": 0
+        },
+        "biometrics": {
+          "cos_recon_vs_ref_mean": 0.4588,
+          "cos_recon_vs_target_gt": 0.6686,
+          "cos_recon_vs_diff_id": -0.0578,
+          "biometric_identity_gap": 0.5166
+        },
+        "reconstruction": {
+          "psnr": 15.84,
+          "ssim": 0.6834,
+          "mae": 31.9534,
+          "rmse": 41.1581,
+          "sobel_error": 0.0712,
+          "laplacian_error": 0.2945
+        }
+      },
+      "delta_clean_o3_vs_baseline": {
+        "delta_cos_ref": 0.0,
+        "delta_biometric_gap": 0.0,
+        "delta_psnr": 0.0,
+        "delta_ssim": 0.0
+      }
+    }
+  }
+}

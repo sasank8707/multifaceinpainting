@@ -1,0 +1,30 @@
+{
+  "before": {
+    "mean_token_norm": 7.184392929077148,
+    "std_token_norm": 12.822602272033691,
+    "min_token_norm": 0.5831292271614075,
+    "max_token_norm": 32.31996536254883,
+    "global_mean": -0.0041956654749810696,
+    "global_std": 0.5300942659378052
+  },
+  "after": {
+    "mean_token_norm": 28.58002281188965,
+    "std_token_norm": 1.749026894569397,
+    "min_token_norm": 28.378210067749023,
+    "max_token_norm": 43.822731018066406,
+    "global_mean": -0.11144467443227768,
+    "global_std": 1.027193307876587,
+    "null_mean_norm": 28.579437255859375,
+    "null_min_norm": 28.376432418823242,
+    "null_max_norm": 43.73095703125,
+    "token_0_norm": 43.822731018066406,
+    "tokens_1_76_mean_norm": 28.379459381103516
+  },
+  "target": {
+    "mean_token_norm": 28.53,
+    "token_0_norm": 43.82,
+    "tokens_1_76_norm": 28.38,
+    "global_mean": -0.1116,
+    "global_std": 1.0253
+  }
+}

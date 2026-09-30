@@ -1,0 +1,31 @@
+{
+  "audit_target": "Ablation A7 (Verifier-Aware Sampling / O3 Reranker)",
+  "audit_timestamp": 1790529772.922294,
+  "total_checks": 3,
+  "violations_found": 2,
+  "violations": [
+    {
+      "check": "Ground-Truth Target Invariance (Test-Time Feasibility)",
+      "status": "VIOLATION_CONFIRMED",
+      "severity": "CRITICAL",
+      "evidence": "Lines 488-491 in evaluate_severity_25.py compute 'qual_norm' directly from 'psnr_val', which was calculated using ground-truth unmasked target pixels (target_rgb).",
+      "implication": "At test/inference time, the occluded target region is missing by definition. Using ground-truth PSNR to score candidates is direct evaluation oracle leakage, rendering the reported A7 boost artificially inflated and technically invalid."
+    },
+    {
+      "check": "Matcher Independence (Metric Disjointness)",
+      "status": "VIOLATION_CONFIRMED",
+      "severity": "HIGH",
+      "evidence": "Candidate selection used 'diff_arcface' (w600k_r50.onnx) to compute cos_val against references, which is the exact same backbone used as the final evaluation metric (ArcFace cosine similarity).",
+      "implication": "Selecting the sample that maximizes the test metric on the same matcher creates optimization bias toward that specific metric, violating the independence of held-out evaluators."
+    }
+  ],
+  "valid_findings": [
+    {
+      "check": "Candidate Pool Size Protocol",
+      "status": "PASS",
+      "evidence": "candidate_seeds = [42, 43, 44] confirms K=3 was used as planned in Phase 7 protocol."
+    }
+  ],
+  "formal_ruling": "A7_NUMBERS_INVALID_LEAKAGE_DETECTED",
+  "recommendation": "1. Discard the previously reported A7 metrics (e.g. SimRef 0.5644, PSNR 21.77 dB) from all formal publication conclusions.\n2. Baseline benchmark comparison must strictly rely on uncheated single-shot configurations (Step 150 vs Step 500 at K=1).\n3. If candidate reranking is evaluated in the future, it must strictly use a blind, no-reference image quality metric (e.g. BRISQUE, NIQE, or CLIP-IQA) and an independent non-ArcFace biometric matcher (e.g. AdaFace or CurricularFace) with zero ground-truth target access."
+}

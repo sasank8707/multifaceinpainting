@@ -1,0 +1,102 @@
+{
+  "experiment": {
+    "name": "Phase 7 Corrected Identity-Conditioned Diffusion Generation",
+    "model": "runwayml/stable-diffusion-inpainting",
+    "device": "cpu",
+    "precision": "fp32",
+    "seed": 42,
+    "inference_steps": 5,
+    "guidance_scale": 7.5,
+    "working_resolution": [
+      512,
+      512
+    ],
+    "original_resolution": [
+      1024,
+      1024
+    ],
+    "num_candidates": 1,
+    "target_id": "7367",
+    "reference_ids": [
+      "13401",
+      "23058",
+      "23414"
+    ],
+    "reference_weights": [
+      0.40340000000000004,
+      0.35350000000000004,
+      0.24310000000000004
+    ],
+    "masked_pixels": 84250,
+    "mask_coverage_percentage": 8.034706115722656,
+    "diffusion_runtime_seconds": 188.9385004043579,
+    "total_runtime_seconds": 223.62587189674377
+  },
+  "unmasked_invariance": {
+    "passed": true,
+    "max_unmasked_diff": 0.0,
+    "violated_pixels": 0
+  },
+  "masked_region_reconstruction_vs_ground_truth": {
+    "identity_conditioned": {
+      "mae": 24.495703264094956,
+      "rmse": 39.40121047310344,
+      "psnr_db": 16.22061232234616,
+      "crop_ssim": 0.72484716892771,
+      "sobel_gradient_error": 0.08885921537876129,
+      "laplacian_5x5_error": 0.10639169812202454
+    },
+    "vanilla_baseline": {
+      "mae": 18.55397428288823,
+      "rmse": 25.575358055434908,
+      "psnr_db": 19.974369157206006,
+      "crop_ssim": 0.8126430412076577,
+      "sobel_gradient_error": 0.05422508344054222,
+      "laplacian_5x5_error": 0.09725543111562729
+    },
+    "delta_identity_minus_vanilla": {
+      "mae_delta": 5.941728981206726,
+      "rmse_delta": 13.825852417668532,
+      "psnr_delta_db": -3.7537568348598462,
+      "ssim_delta": -0.08779587227994778,
+      "sobel_delta": 0.03463413193821907,
+      "laplacian_delta": 0.009136267006397247
+    }
+  },
+  "conditioning_sensitivity": {
+    "mean_pixel_delta_baseline": 29.55704846686449,
+    "max_pixel_delta_baseline": 239.0,
+    "fraction_masked_pixels_changed": 0.9526844708209693,
+    "ssim_between_vanilla_and_identity": 0.7133515627011029,
+    "measurably_different": true
+  },
+  "biometric_arcface_identity_evaluation": {
+    "whole_face": {
+      "target_vs_same_id_refs": 0.6676063537597656,
+      "identity_conditioned_vs_same_id_refs": 0.4246359169483185,
+      "vanilla_baseline_vs_same_id_refs": 0.5066444277763367,
+      "identity_conditioned_vs_target": 0.6659492254257202,
+      "vanilla_baseline_vs_target": 0.772499680519104,
+      "identity_conditioned_vs_different_id": -0.02932988479733467,
+      "identity_gain_over_vanilla": -0.08200851082801819
+    },
+    "masked_region_crop": {
+      "target_vs_same_id_refs": 0.6318528652191162,
+      "identity_conditioned_vs_same_id_refs": 0.7548246383666992,
+      "vanilla_baseline_vs_same_id_refs": 0.7644776701927185,
+      "crop_identity_gain_over_vanilla": -0.009653031826019287
+    }
+  },
+  "artifacts_saved": [
+    "01_target.png",
+    "02_mask.png",
+    "03_reference_A.png",
+    "04_reference_B.png",
+    "05_reference_C.png",
+    "06_vanilla_baseline.png",
+    "07_identity_conditioned.png",
+    "08_masked_region_crop_baseline.png",
+    "09_masked_region_crop_identity.png",
+    "10_final_comparison.png"
+  ]
+}

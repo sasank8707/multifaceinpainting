@@ -1,0 +1,63 @@
+{
+  "timestamp": 1790534287.0025687,
+  "audit_passed": true,
+  "elapsed_seconds": 6.164,
+  "check1_static_code": {
+    "status": "PASS",
+    "rerank_parameters": [
+      "self",
+      "candidates",
+      "candidate_seeds",
+      "reference_rgbs"
+    ],
+    "forbidden_identifiers_checked": [
+      "target_rgb",
+      "target_image",
+      "target_gt",
+      "ground_truth",
+      "diff_arcface",
+      "w600k_r50",
+      "DifferentiableArcFaceBackbone",
+      "psnr",
+      "ssim",
+      "mae_diff",
+      "rmse"
+    ],
+    "violations": []
+  },
+  "check2_matcher_independence": {
+    "status": "PASS",
+    "reranker_model": "InceptionResnetV1",
+    "reranker_params": 27910327,
+    "evaluation_model": "DifferentiableArcFaceBackbone",
+    "evaluation_params": 0,
+    "architectures_disjoint": true
+  },
+  "check3_ground_truth_invariance": {
+    "status": "PASS",
+    "scores_under_target_A": [
+      0.8824,
+      0.9516,
+      0.5222
+    ],
+    "scores_under_target_B": [
+      0.8824,
+      0.9516,
+      0.5222
+    ],
+    "scores_under_target_C": [
+      0.8824,
+      0.9516,
+      0.5222
+    ],
+    "winner_under_target_A": 2,
+    "winner_under_target_B": 2,
+    "winner_under_target_C": 2,
+    "ground_truth_invariance_proven": true
+  },
+  "check4_legacy_quarantine": {
+    "status": "PASS",
+    "formal_ruling": "A7_NUMBERS_INVALID_LEAKAGE_DETECTED",
+    "quarantined": true
+  }
+}

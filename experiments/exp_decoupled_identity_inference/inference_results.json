@@ -1,0 +1,70 @@
+{
+  "checkpoint": "checkpoints/decoupled_identity_composite_loss/step_150.pt",
+  "diffusion_config": {
+    "steps": 5,
+    "guidance_scale": 7.5,
+    "lambda_scale": 0.1,
+    "seed": 42,
+    "runtime_sec": 180.42063522338867
+  },
+  "unmasked_invariance": {
+    "passed": true,
+    "max_difference": 0.0,
+    "violated_pixels": 0
+  },
+  "biometric_identity": {
+    "cos_recon_vs_ref_mean": 0.5066331028938293,
+    "cos_recon_vs_target_gt": 0.781174898147583,
+    "cos_recon_vs_diff_id_3616": -0.035948496311903,
+    "biometric_identity_gap": 0.5425815992057323,
+    "vanilla_cos_vs_ref_mean": 0.5112044215202332,
+    "vanilla_cos_vs_diff_id": -0.02959669940173626,
+    "vanilla_biometric_gap": 0.5408011209219694
+  },
+  "reconstruction_quality": {
+    "psnr": 20.386067729317837,
+    "ssim": 0.8148841429689139,
+    "mae": 17.590401582591493,
+    "rmse": 24.391403684278124,
+    "sobel_error": 0.0543258860707283,
+    "laplacian_error": 0.09770045429468155
+  },
+  "reference_scoring": {
+    "reference_names": [
+      "13401",
+      "23058",
+      "23414"
+    ],
+    "normalized_weights": {
+      "13401": 0.4034,
+      "23058": 0.2431,
+      "23414": 0.3535
+    },
+    "score_breakdown": {
+      "13401": {
+        "pose_score": 0.7019,
+        "quality_score": 0.7242,
+        "visibility_score": 0.2215,
+        "overlap_score": 1.0,
+        "composite_score": 0.6081,
+        "is_valid_identity": true
+      },
+      "23058": {
+        "pose_score": 0.0856,
+        "quality_score": 0.4973,
+        "visibility_score": 0.2215,
+        "overlap_score": 1.0,
+        "composite_score": 0.3665,
+        "is_valid_identity": true
+      },
+      "23414": {
+        "pose_score": 0.6031,
+        "quality_score": 0.5421,
+        "visibility_score": 0.2215,
+        "overlap_score": 1.0,
+        "composite_score": 0.5329,
+        "is_valid_identity": true
+      }
+    }
+  }
+}

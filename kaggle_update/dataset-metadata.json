@@ -1,0 +1,23 @@
+{
+    "info":  {
+                 "datasetId":  12123090,
+                 "datasetSlug":  "multifaceinpainting-evaluation",
+                 "ownerUser":  "sasankvelaga",
+                 "usabilityRating":  0.25,
+                 "totalViews":  1,
+                 "title":  "multifaceinpainting-evaluation",
+                 "subtitle":  "",
+                 "description":  "",
+                 "isPrivate":  true,
+                 "keywords":  [
+                                  "pre-trained model"
+                              ],
+                 "licenses":  [
+                                  {
+                                      "name":  "unknown"
+                                  }
+                              ],
+                 "expectedUpdateFrequency":  "not specified"
+             },
+    "id":  "sasankvelaga/multifaceinpainting-evaluation"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Phase 7 Corrected Identity-Conditioned Diffusion Generation",
+  "model": "runwayml/stable-diffusion-inpainting",
+  "device": "cpu",
+  "precision": "fp32",
+  "seed": 42,
+  "inference_steps": 5,
+  "guidance_scale": 7.5,
+  "working_resolution": [
+    512,
+    512
+  ],
+  "original_resolution": [
+    1024,
+    1024
+  ],
+  "num_candidates": 1,
+  "target_id": "7367",
+  "reference_ids": [
+    "13401",
+    "23058",
+    "23414"
+  ],
+  "reference_weights": [
+    0.40340000000000004,
+    0.35350000000000004,
+    0.24310000000000004
+  ],
+  "masked_pixels": 84250,
+  "mask_coverage_percentage": 8.034706115722656,
+  "diffusion_runtime_seconds": 188.9385004043579,
+  "total_runtime_seconds": 223.62587189674377
+}

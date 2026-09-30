@@ -1,0 +1,54 @@
+{
+  "experiment": {
+    "name": "Phase 7 Ablation 1: Vanilla Diffusion Inpainting Baseline",
+    "model": "runwayml/stable-diffusion-inpainting",
+    "prompt": "high quality photorealistic portrait of a woman, natural facial anatomy, natural skin texture",
+    "negative_prompt": null,
+    "target_image": "7367.jpg",
+    "seed": 42,
+    "num_inference_steps": 5,
+    "guidance_scale": 7.5,
+    "working_resolution": [
+      512,
+      512
+    ],
+    "original_resolution": [
+      1024,
+      1024
+    ],
+    "device": "cpu",
+    "pipeline_runtime_seconds": 214.5203070640564,
+    "total_runtime_seconds": 220.16187119483948
+  },
+  "unmasked_invariance": {
+    "passed": true,
+    "max_unmasked_diff": 0.0,
+    "violated_pixels": 0
+  },
+  "quantitative_metrics_comparison": {
+    "ablation1_vanilla_baseline": {
+      "masked_mae": 18.55397428288823,
+      "masked_rmse": 25.575358055434908,
+      "masked_psnr_db": 19.974369157206006,
+      "masked_crop_ssim": 0.8126430412076577,
+      "sobel_gradient_error": 0.05422508344054222,
+      "laplacian_5x5_error": 0.09725543111562729
+    },
+    "phase7_run": {
+      "masked_mae": 47.45016419386746,
+      "masked_rmse": 66.23091818956938,
+      "masked_psnr_db": 11.709588090307104,
+      "masked_crop_ssim": 0.5971831294784438,
+      "sobel_gradient_error": 0.11071543395519257,
+      "laplacian_5x5_error": 0.12537026405334473
+    },
+    "delta_ablation_minus_phase7": {
+      "mae_delta": -28.896189910979228,
+      "rmse_delta": -40.655560134134475,
+      "psnr_delta_db": 8.264781066898902,
+      "ssim_delta": 0.21545991172921397,
+      "sobel_delta": -0.056490350514650345,
+      "laplacian_delta": -0.028114832937717438
+    }
+  }
+}

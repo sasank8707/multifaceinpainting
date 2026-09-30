@@ -1,0 +1,221 @@
+{
+  "benchmark_metadata": {
+    "name": "Severe_Occlusion_Identity_Benchmark",
+    "severity_tier": "25_percent",
+    "checkpoint": "checkpoints/decoupled_identity_composite_loss/step_150.pt",
+    "steps": 5,
+    "guidance_scale": 7.5,
+    "lambda_scale": 0.1,
+    "base_seed": 42,
+    "total_benchmark_time_seconds": 1496.9194655418396,
+    "num_ablations": 7,
+    "target_subject": "CelebA-HQ 7367 (ID 3111)",
+    "references": [
+      "13401",
+      "23058",
+      "23414"
+    ],
+    "reference_weights": {
+      "13401": 0.4034,
+      "23058": 0.2431,
+      "23414": 0.3535
+    }
+  },
+  "vanilla_baseline": {
+    "unmasked_invariance": {
+      "passed": true,
+      "max_difference": 0.0,
+      "violated_pixels": 0
+    },
+    "biometric_identity": {
+      "cos_recon_vs_ref_mean": 0.5112044215202332,
+      "cos_recon_vs_target_gt": 0.7798529267311096,
+      "cos_recon_vs_diff_id_3616": -0.02959669940173626,
+      "biometric_identity_gap": 0.5408011209219694
+    },
+    "reconstruction_quality": {
+      "psnr": 19.974369157206006,
+      "ssim": 0.8126430412076577,
+      "mae": 18.55397428288823,
+      "rmse": 25.575358055434908,
+      "sobel_error": 0.05422508344054222,
+      "laplacian_error": 0.09725543111562729
+    }
+  },
+  "ablations": {
+    "A1": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.5111751556396484,
+        "cos_recon_vs_target_gt": 0.7798885703086853,
+        "cos_recon_vs_diff_id_3616": -0.029481474310159683,
+        "biometric_identity_gap": 0.5406566299498081
+      },
+      "reconstruction_quality": {
+        "psnr": 19.975658675711376,
+        "ssim": 0.812671127223399,
+        "mae": 18.552134520276955,
+        "rmse": 25.571561386254057,
+        "sobel_error": 0.05422935634851456,
+        "laplacian_error": 0.09723823517560959
+      },
+      "runtime_seconds": 182.85064601898193,
+      "description": "Single reference token (Ref B 23058), direct injection without fusion",
+      "name": "Single Reference (Random)"
+    },
+    "A2": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.5115871429443359,
+        "cos_recon_vs_target_gt": 0.7800225615501404,
+        "cos_recon_vs_diff_id_3616": -0.029526952654123306,
+        "biometric_identity_gap": 0.5411140955984592
+      },
+      "reconstruction_quality": {
+        "psnr": 19.973040865640602,
+        "ssim": 0.8126275214770432,
+        "mae": 18.558223541048466,
+        "rmse": 25.57926947170758,
+        "sobel_error": 0.05422220006585121,
+        "laplacian_error": 0.09724811464548111
+      },
+      "runtime_seconds": 183.55439519882202,
+      "description": "Arithmetic token mean of all 3 references, bypassing transformer",
+      "name": "Random Multi-Ref (Mean Avg)"
+    },
+    "A3": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.5114882588386536,
+        "cos_recon_vs_target_gt": 0.7799504399299622,
+        "cos_recon_vs_diff_id_3616": -0.029562843963503838,
+        "biometric_identity_gap": 0.5410511028021574
+      },
+      "reconstruction_quality": {
+        "psnr": 19.973142524475268,
+        "ssim": 0.8126486677425578,
+        "mae": 18.558678536102867,
+        "rmse": 25.578970096097542,
+        "sobel_error": 0.054216206073760986,
+        "laplacian_error": 0.09723087400197983
+      },
+      "runtime_seconds": 183.31392741203308,
+      "description": "Direct injection of highest-quality Ref A (13401) tokens",
+      "name": "Globally Best Ref (Quality Only)"
+    },
+    "A4": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.5047821402549744,
+        "cos_recon_vs_target_gt": 0.778847873210907,
+        "cos_recon_vs_diff_id_3616": -0.03903842717409134,
+        "biometric_identity_gap": 0.5438205674290657
+      },
+      "reconstruction_quality": {
+        "psnr": 20.499093701293532,
+        "ssim": 0.8177124110854205,
+        "mae": 17.650425321463896,
+        "rmse": 24.076064345772966,
+        "sobel_error": 0.05348827689886093,
+        "laplacian_error": 0.09626512229442596
+      },
+      "runtime_seconds": 189.6692819595337,
+      "description": "Regional fusion with uniform reference weights [1/3, 1/3, 1/3]",
+      "name": "Multi-Ref (Equal Weights)"
+    },
+    "A5": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.5047087669372559,
+        "cos_recon_vs_target_gt": 0.7787271738052368,
+        "cos_recon_vs_diff_id_3616": -0.039273686707019806,
+        "biometric_identity_gap": 0.5439824536442757
+      },
+      "reconstruction_quality": {
+        "psnr": 20.49074371176745,
+        "ssim": 0.8176591146732388,
+        "mae": 17.66744609297725,
+        "rmse": 24.09922047078916,
+        "sobel_error": 0.053509410470724106,
+        "laplacian_error": 0.09626618772745132
+      },
+      "runtime_seconds": 182.73399949073792,
+      "description": "Regional fusion with dynamic weights but without spatial mask conditioning",
+      "name": "Global Attention Fusion"
+    },
+    "A6": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.505043625831604,
+        "cos_recon_vs_target_gt": 0.7791057229042053,
+        "cos_recon_vs_diff_id_3616": -0.039202943444252014,
+        "biometric_identity_gap": 0.544246569275856
+      },
+      "reconstruction_quality": {
+        "psnr": 20.490332159564982,
+        "ssim": 0.8176263115190677,
+        "mae": 17.66813056379822,
+        "rmse": 24.100362359835398,
+        "sobel_error": 0.05352329835295677,
+        "laplacian_error": 0.09626902639865875
+      },
+      "runtime_seconds": 185.00962615013123,
+      "description": "Full O1+O2 proposed system (dynamic weights + spatial mask conditioning, K=1)",
+      "name": "Mask-Aware Regional Fusion"
+    },
+    "A7": {
+      "unmasked_invariance": {
+        "passed": true,
+        "max_difference": 0.0,
+        "violated_pixels": 0
+      },
+      "biometric_identity": {
+        "cos_recon_vs_ref_mean": 0.5643750429153442,
+        "cos_recon_vs_target_gt": 0.8235026001930237,
+        "cos_recon_vs_diff_id_3616": -0.06021406501531601,
+        "biometric_identity_gap": 0.6245891079306602
+      },
+      "reconstruction_quality": {
+        "psnr": 21.77295546614338,
+        "ssim": 0.841545343181124,
+        "mae": 15.727442136498516,
+        "rmse": 20.79181523131769,
+        "sobel_error": 0.05044698342680931,
+        "laplacian_error": 0.09112628549337387
+      },
+      "name": "Full System + Verifier Reranker",
+      "description": "Proposed O1+O2+O3 full system, selected Candidate 2 (Seed 43)",
+      "verifier_scores": [
+        0.4494350330873619,
+        0.51923717151303,
+        0.34380212635096086
+      ],
+      "selected_candidate_index": 2,
+      "selected_seed": 43
+    }
+  }
+}

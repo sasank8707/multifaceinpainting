@@ -1,0 +1,15 @@
+{
+  "model": "runwayml/stable-diffusion-inpainting",
+  "total_steps": 100,
+  "batch_size": 1,
+  "K_references": 3,
+  "lambda_scale": 0.1,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "optimizer": "AdamW",
+  "trainable_parameters": 12779520,
+  "frozen_parameters": 1074136556,
+  "resolution": "512x512",
+  "total_runtime_seconds": 11641.497027635574,
+  "device": "cpu"
+}

@@ -1,0 +1,64 @@
+# Evaluation and Benchmark Configuration
+
+benchmark:
+  name: "Severe_Occlusion_Identity_Benchmark"
+  version: "1.0.0"
+  random_seed: 42
+
+severity_tiers:
+  - name: "25_percent"
+    min_face_coverage: 0.20
+    max_face_coverage: 0.30
+  - name: "50_percent"
+    min_face_coverage: 0.45
+    max_face_coverage: 0.55
+  - name: "75_percent"
+    min_face_coverage: 0.70
+    max_face_coverage: 0.80
+  - name: "100_percent_full_face"
+    min_face_coverage: 0.95
+    max_face_coverage: 1.00
+
+ablations:
+  - id: "A1"
+    name: "Single reference (random)"
+    description: "Select 1 random reference, no scoring, direct injection."
+  - id: "A2"
+    name: "Random multi-reference, no scoring"
+    description: "Select random 3 references, uniform averaging."
+  - id: "A3"
+    name: "Globally best reference (quality only)"
+    description: "Rank by global image quality, no mask-aware scoring."
+  - id: "A4"
+    name: "Mean multi-reference fusion (equal weights)"
+    description: "Score references, but fuse with equal weights in cross-attention."
+  - id: "A5"
+    name: "Global attention fusion (no mask conditioning)"
+    description: "Standard cross-attention without spatial mask bias."
+  - id: "A6"
+    name: "Proposed mask-aware regional fusion, no verifier"
+    description: "Full O1+O2 proposed pipeline with K=1 candidate."
+  - id: "A7"
+    name: "Proposed fusion + verifier-aware sampling [FULL]"
+    description: "Full proposed system with K candidates reranked by held-out verifier."
+
+metrics:
+  identity:
+    held_out_matcher: "ArcFace-R100"
+    report_cosine_similarity: true
+    report_tar_at_far: true
+    far_threshold: 0.001
+    report_roc_auc: true
+  quality:
+    report_psnr: true
+    report_ssim: true
+    report_lpips: true
+    report_niqe: true
+    report_brisque: true
+    report_laplacian_clarity: true
+  structure:
+    report_landmark_l2_error: true
+    report_boundary_continuity: true
+  integrity:
+    verify_unmasked_pixel_invariance: true
+    report_masked_pixels_changed_pct: true

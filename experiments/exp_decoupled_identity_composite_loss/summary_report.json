@@ -1,0 +1,69 @@
+{
+  "total_steps": 50,
+  "start_step": 100,
+  "end_step": 150,
+  "total_time_min": 137.22978590329487,
+  "mean_step_time_sec": 150.6023797273636,
+  "initial_diag": {
+    "step": 100,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5880240797996521,
+      "cos_pred_vs_diff_id": -0.019906049594283104,
+      "cos_pred_vs_target_gt": 0.849154531955719,
+      "biometric_gap": 0.6079301293939352
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.16317218542099,
+        "rel_l2": 0.0012734787305817008,
+        "cosine_sim": 0.9999989867210388
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.04878903925418854,
+        "rel_l2": 0.0003807744651567191,
+        "cosine_sim": 0.9999997615814209
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.513935804367065,
+      "mean_value_norm": 15.583325862884521
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.518569320440292,
+      "mean_max_prob": 0.014352232363307849,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.52015739251485
+    }
+  },
+  "final_diag": {
+    "step": 150,
+    "biometric_alignment": {
+      "cos_pred_vs_ref_mean": 0.5731897950172424,
+      "cos_pred_vs_diff_id": -0.023039694875478745,
+      "cos_pred_vs_target_gt": 0.8377249240875244,
+      "biometric_gap": 0.5962294898927212
+    },
+    "epsilon_sensitivity": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.429853618144989,
+        "rel_l2": 0.003355104709044099,
+        "cosine_sim": 0.9999942779541016
+      },
+      "same_id_vs_diff_id": {
+        "l2_diff": 0.049880459904670715,
+        "rel_l2": 0.00038932825555093586,
+        "cosine_sim": 0.9999998807907104
+      }
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.585981845855713,
+      "mean_value_norm": 17.194375574588776
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.516373723745346,
+      "mean_max_prob": 0.015146416029892862,
+      "uniform_entropy_theoretical": 5.545177444479562,
+      "entropy_pct_of_uniform": 99.48056268671994
+    }
+  }
+}

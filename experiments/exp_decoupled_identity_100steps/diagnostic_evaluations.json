@@ -1,0 +1,802 @@
+[
+  {
+    "step": 0,
+    "reference_sensitivity": {
+      "ref_A_vs_ref_B": {
+        "l2_diff": 0.06407219916582108,
+        "rel_l2": 0.00046189589193090796,
+        "cosine_sim": 0.9999997615814209
+      },
+      "ref_A_vs_ref_C": {
+        "l2_diff": 0.062516950070858,
+        "rel_l2": 0.00045068413601256907,
+        "cosine_sim": 0.9999997615814209
+      },
+      "ref_A_vs_diff_id": {
+        "l2_diff": 0.10984128713607788,
+        "rel_l2": 0.0007918448536656797,
+        "cosine_sim": 0.9999997019767761
+      }
+    },
+    "unet_epsilon_response": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.23509696125984192,
+        "rel_l2": 0.0016948118573054671,
+        "cosine_sim": 0.9999985694885254
+      }
+    },
+    "masked_vs_unmasked": {
+      "masked_mean_diff": 0.004181705880910158,
+      "unmasked_mean_diff": 0.0005595008260570467,
+      "masked_ratio": 7.473860533457844
+    },
+    "target_leakage": {
+      "l2_diff": 0.0,
+      "cosine_sim": 1.0000004768371582,
+      "verified_zero_leakage": true
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.612999260425568,
+      "mean_value_norm": 15.512092888355255,
+      "per_layer": [
+        {
+          "layer_name": "down_blocks.0.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.740815162658691,
+          "value_norm": 10.18326187133789,
+          "entropy": 5.528198719024658,
+          "max_prob": 0.012750938534736633
+        },
+        {
+          "layer_name": "down_blocks.0.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.28991985321045,
+          "value_norm": 10.470870018005371,
+          "entropy": 5.535848617553711,
+          "max_prob": 0.00926320068538189
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.617088317871094,
+          "value_norm": 14.58154582977295,
+          "entropy": 5.51936149597168,
+          "max_prob": 0.01287043560296297
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 15.450831413269043,
+          "value_norm": 14.736408233642578,
+          "entropy": 5.526972770690918,
+          "max_prob": 0.009835612028837204
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.825878143310547,
+          "value_norm": 21.038616180419922,
+          "entropy": 5.520442008972168,
+          "max_prob": 0.01377253420650959
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.45423698425293,
+          "value_norm": 20.442590713500977,
+          "entropy": 5.511932849884033,
+          "max_prob": 0.016903815791010857
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.517581939697266,
+          "value_norm": 20.80743980407715,
+          "entropy": 5.499326229095459,
+          "max_prob": 0.017352759838104248
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.59778594970703,
+          "value_norm": 20.4495849609375,
+          "entropy": 5.480955123901367,
+          "max_prob": 0.027635788545012474
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.817668914794922,
+          "value_norm": 20.73383140563965,
+          "entropy": 5.48891019821167,
+          "max_prob": 0.02101769670844078
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.969801902770996,
+          "value_norm": 14.598150253295898,
+          "entropy": 5.464854717254639,
+          "max_prob": 0.025008557364344597
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.83333969116211,
+          "value_norm": 14.751325607299805,
+          "entropy": 5.508420467376709,
+          "max_prob": 0.017112959176301956
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.579113006591797,
+          "value_norm": 14.330883026123047,
+          "entropy": 5.499344348907471,
+          "max_prob": 0.022093774750828743
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.082647323608398,
+          "value_norm": 10.661150932312012,
+          "entropy": 5.533505916595459,
+          "max_prob": 0.010536009445786476
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.439143180847168,
+          "value_norm": 9.899068832397461,
+          "entropy": 5.536404609680176,
+          "max_prob": 0.008189339190721512
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.101394653320312,
+          "value_norm": 10.135082244873047,
+          "entropy": 5.539153575897217,
+          "max_prob": 0.009021572768688202
+        },
+        {
+          "layer_name": "mid_block.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.490741729736328,
+          "value_norm": 20.373676300048828,
+          "entropy": 5.508615970611572,
+          "max_prob": 0.016099533066153526
+        }
+      ]
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.512640476226807,
+      "mean_max_prob": 0.015591532981488854
+    },
+    "nan_inf_detected": false
+  },
+  {
+    "step": 25,
+    "reference_sensitivity": {
+      "ref_A_vs_ref_B": {
+        "l2_diff": 0.06484466791152954,
+        "rel_l2": 0.00046753307105973363,
+        "cosine_sim": 1.0
+      },
+      "ref_A_vs_ref_C": {
+        "l2_diff": 0.0639568418264389,
+        "rel_l2": 0.0004611317999660969,
+        "cosine_sim": 1.000000238418579
+      },
+      "ref_A_vs_diff_id": {
+        "l2_diff": 0.11094861477613449,
+        "rel_l2": 0.0007999446825124323,
+        "cosine_sim": 0.9999997019767761
+      }
+    },
+    "unet_epsilon_response": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.3019997179508209,
+        "rel_l2": 0.002177431946620345,
+        "cosine_sim": 0.9999979138374329
+      }
+    },
+    "masked_vs_unmasked": {
+      "masked_mean_diff": 0.005565806291997433,
+      "unmasked_mean_diff": 0.0007950230501592159,
+      "masked_ratio": 7.000723166015307
+    },
+    "target_leakage": {
+      "l2_diff": 0.0,
+      "cosine_sim": 1.0000004768371582,
+      "verified_zero_leakage": true
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.619703233242035,
+      "mean_value_norm": 16.08326095342636,
+      "per_layer": [
+        {
+          "layer_name": "down_blocks.0.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.737008094787598,
+          "value_norm": 10.685093879699707,
+          "entropy": 5.528241157531738,
+          "max_prob": 0.013184438459575176
+        },
+        {
+          "layer_name": "down_blocks.0.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.307767868041992,
+          "value_norm": 10.808649063110352,
+          "entropy": 5.5356550216674805,
+          "max_prob": 0.009169206954538822
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.62149429321289,
+          "value_norm": 15.229272842407227,
+          "entropy": 5.519174575805664,
+          "max_prob": 0.012722205370664597
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 15.455806732177734,
+          "value_norm": 15.136453628540039,
+          "entropy": 5.526880264282227,
+          "max_prob": 0.00970655307173729
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.83740234375,
+          "value_norm": 21.67380714416504,
+          "entropy": 5.520385265350342,
+          "max_prob": 0.014311827719211578
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.44972801208496,
+          "value_norm": 21.34288215637207,
+          "entropy": 5.512042999267578,
+          "max_prob": 0.016650289297103882
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.553211212158203,
+          "value_norm": 21.599750518798828,
+          "entropy": 5.498730182647705,
+          "max_prob": 0.01805148273706436
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.605854034423828,
+          "value_norm": 21.227924346923828,
+          "entropy": 5.478982925415039,
+          "max_prob": 0.028014814481139183
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.830440521240234,
+          "value_norm": 21.41724395751953,
+          "entropy": 5.487947940826416,
+          "max_prob": 0.023956172168254852
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.958373069763184,
+          "value_norm": 14.940552711486816,
+          "entropy": 5.465395450592041,
+          "max_prob": 0.028052380308508873
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.85947322845459,
+          "value_norm": 15.255892753601074,
+          "entropy": 5.5081586837768555,
+          "max_prob": 0.01678445190191269
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.578974723815918,
+          "value_norm": 14.881641387939453,
+          "entropy": 5.499340534210205,
+          "max_prob": 0.02228943444788456
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.084458351135254,
+          "value_norm": 11.028665542602539,
+          "entropy": 5.533402919769287,
+          "max_prob": 0.010548943653702736
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.465930938720703,
+          "value_norm": 10.303258895874023,
+          "entropy": 5.53652286529541,
+          "max_prob": 0.008585618808865547
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.079217910766602,
+          "value_norm": 10.52703857421875,
+          "entropy": 5.539222240447998,
+          "max_prob": 0.008868862874805927
+        },
+        {
+          "layer_name": "mid_block.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.490110397338867,
+          "value_norm": 21.2740478515625,
+          "entropy": 5.5074663162231445,
+          "max_prob": 0.016747958958148956
+        }
+      ]
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.512346833944321,
+      "mean_max_prob": 0.01610279007581994
+    },
+    "nan_inf_detected": false
+  },
+  {
+    "step": 50,
+    "reference_sensitivity": {
+      "ref_A_vs_ref_B": {
+        "l2_diff": 0.06501185894012451,
+        "rel_l2": 0.00046885557821951807,
+        "cosine_sim": 1.0000003576278687
+      },
+      "ref_A_vs_ref_C": {
+        "l2_diff": 0.05886039882898331,
+        "rel_l2": 0.00042449217289686203,
+        "cosine_sim": 0.9999999403953552
+      },
+      "ref_A_vs_diff_id": {
+        "l2_diff": 0.11465109139680862,
+        "rel_l2": 0.0008268461097031832,
+        "cosine_sim": 0.9999998807907104
+      }
+    },
+    "unet_epsilon_response": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.4359906315803528,
+        "rel_l2": 0.0031442975159734488,
+        "cosine_sim": 0.9999954700469971
+      }
+    },
+    "masked_vs_unmasked": {
+      "masked_mean_diff": 0.008108893409371376,
+      "unmasked_mean_diff": 0.0009172171703539789,
+      "masked_ratio": 8.840659840290131
+    },
+    "target_leakage": {
+      "l2_diff": 0.0,
+      "cosine_sim": 1.0000004768371582,
+      "verified_zero_leakage": true
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.62626588344574,
+      "mean_value_norm": 16.692088961601257,
+      "per_layer": [
+        {
+          "layer_name": "down_blocks.0.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.72547721862793,
+          "value_norm": 10.898824691772461,
+          "entropy": 5.528076171875,
+          "max_prob": 0.014188474975526333
+        },
+        {
+          "layer_name": "down_blocks.0.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.318265914916992,
+          "value_norm": 11.091015815734863,
+          "entropy": 5.535583019256592,
+          "max_prob": 0.008896889165043831
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.643351554870605,
+          "value_norm": 15.921152114868164,
+          "entropy": 5.51863956451416,
+          "max_prob": 0.012431521899998188
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 15.464062690734863,
+          "value_norm": 15.582239151000977,
+          "entropy": 5.526758193969727,
+          "max_prob": 0.00985631626099348
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.815624237060547,
+          "value_norm": 22.651927947998047,
+          "entropy": 5.519779682159424,
+          "max_prob": 0.01424805261194706
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.44529151916504,
+          "value_norm": 22.185134887695312,
+          "entropy": 5.511491298675537,
+          "max_prob": 0.016797157004475594
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.58047866821289,
+          "value_norm": 22.304737091064453,
+          "entropy": 5.498404026031494,
+          "max_prob": 0.018192393705248833
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.582111358642578,
+          "value_norm": 21.975948333740234,
+          "entropy": 5.478068828582764,
+          "max_prob": 0.02795987017452717
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.863452911376953,
+          "value_norm": 22.06389045715332,
+          "entropy": 5.487476825714111,
+          "max_prob": 0.024964861571788788
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.95950698852539,
+          "value_norm": 15.485698699951172,
+          "entropy": 5.465186595916748,
+          "max_prob": 0.02851329930126667
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.879560470581055,
+          "value_norm": 15.709961891174316,
+          "entropy": 5.507827281951904,
+          "max_prob": 0.017415517941117287
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.586294174194336,
+          "value_norm": 15.669967651367188,
+          "entropy": 5.499114036560059,
+          "max_prob": 0.021659279242157936
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.083843231201172,
+          "value_norm": 11.197657585144043,
+          "entropy": 5.533578395843506,
+          "max_prob": 0.010385839268565178
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.486347198486328,
+          "value_norm": 10.741476058959961,
+          "entropy": 5.536639213562012,
+          "max_prob": 0.00799779873341322
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.076831817626953,
+          "value_norm": 10.88010311126709,
+          "entropy": 5.539200782775879,
+          "max_prob": 0.008841710165143013
+        },
+        {
+          "layer_name": "mid_block.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.509754180908203,
+          "value_norm": 22.713687896728516,
+          "entropy": 5.507190227508545,
+          "max_prob": 0.016766484826803207
+        }
+      ]
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.512063384056091,
+      "mean_max_prob": 0.016194716678000987
+    },
+    "nan_inf_detected": false
+  },
+  {
+    "step": 75,
+    "reference_sensitivity": {
+      "ref_A_vs_ref_B": {
+        "l2_diff": 0.06526294350624084,
+        "rel_l2": 0.00047066397382877767,
+        "cosine_sim": 1.0000001192092896
+      },
+      "ref_A_vs_ref_C": {
+        "l2_diff": 0.05820423364639282,
+        "rel_l2": 0.00041975791100412607,
+        "cosine_sim": 0.9999998211860657
+      },
+      "ref_A_vs_diff_id": {
+        "l2_diff": 0.1136995404958725,
+        "rel_l2": 0.0008199795265682042,
+        "cosine_sim": 0.999999463558197
+      }
+    },
+    "unet_epsilon_response": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.3990341126918793,
+        "rel_l2": 0.002877758350223303,
+        "cosine_sim": 0.9999961256980896
+      }
+    },
+    "masked_vs_unmasked": {
+      "masked_mean_diff": 0.00751429982483387,
+      "unmasked_mean_diff": 0.0008920225664041936,
+      "masked_ratio": 8.423795394740134
+    },
+    "target_leakage": {
+      "l2_diff": 0.0,
+      "cosine_sim": 1.0000004768371582,
+      "verified_zero_leakage": true
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.636599123477936,
+      "mean_value_norm": 17.075461387634277,
+      "per_layer": [
+        {
+          "layer_name": "down_blocks.0.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.729464530944824,
+          "value_norm": 10.99835205078125,
+          "entropy": 5.527929782867432,
+          "max_prob": 0.01469399780035019
+        },
+        {
+          "layer_name": "down_blocks.0.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.325118064880371,
+          "value_norm": 11.38951587677002,
+          "entropy": 5.535452842712402,
+          "max_prob": 0.008966450579464436
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.644716262817383,
+          "value_norm": 16.414142608642578,
+          "entropy": 5.518704891204834,
+          "max_prob": 0.012169689871370792
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 15.462503433227539,
+          "value_norm": 16.004396438598633,
+          "entropy": 5.526614189147949,
+          "max_prob": 0.010026833042502403
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.841793060302734,
+          "value_norm": 23.119945526123047,
+          "entropy": 5.5191497802734375,
+          "max_prob": 0.014768832363188267
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.45277214050293,
+          "value_norm": 22.631853103637695,
+          "entropy": 5.511531352996826,
+          "max_prob": 0.01653655618429184
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.561128616333008,
+          "value_norm": 22.654767990112305,
+          "entropy": 5.498572826385498,
+          "max_prob": 0.01818188466131687
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.605480194091797,
+          "value_norm": 22.400569915771484,
+          "entropy": 5.4780402183532715,
+          "max_prob": 0.026739366352558136
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.877933502197266,
+          "value_norm": 22.588735580444336,
+          "entropy": 5.487390995025635,
+          "max_prob": 0.024716034531593323
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.995009422302246,
+          "value_norm": 15.95047378540039,
+          "entropy": 5.465100288391113,
+          "max_prob": 0.029609454795718193
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.868524551391602,
+          "value_norm": 16.200815200805664,
+          "entropy": 5.507968902587891,
+          "max_prob": 0.01720450259745121
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.615915298461914,
+          "value_norm": 16.343708038330078,
+          "entropy": 5.498597621917725,
+          "max_prob": 0.021976495161652565
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.106943130493164,
+          "value_norm": 11.467827796936035,
+          "entropy": 5.533310890197754,
+          "max_prob": 0.010496419854462147
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.509647369384766,
+          "value_norm": 10.854632377624512,
+          "entropy": 5.536655426025391,
+          "max_prob": 0.007866432890295982
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.073799133300781,
+          "value_norm": 11.329167366027832,
+          "entropy": 5.539188385009766,
+          "max_prob": 0.008865428157150745
+        },
+        {
+          "layer_name": "mid_block.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.51483726501465,
+          "value_norm": 22.858478546142578,
+          "entropy": 5.50728178024292,
+          "max_prob": 0.0165608748793602
+        }
+      ]
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.51196813583374,
+      "mean_max_prob": 0.016211203357670456
+    },
+    "nan_inf_detected": false
+  },
+  {
+    "step": 100,
+    "reference_sensitivity": {
+      "ref_A_vs_ref_B": {
+        "l2_diff": 0.06404292583465576,
+        "rel_l2": 0.00046182985533960164,
+        "cosine_sim": 0.9999998807907104
+      },
+      "ref_A_vs_ref_C": {
+        "l2_diff": 0.05727045610547066,
+        "rel_l2": 0.0004129918524995446,
+        "cosine_sim": 1.0
+      },
+      "ref_A_vs_diff_id": {
+        "l2_diff": 0.11372889578342438,
+        "rel_l2": 0.0008201280725188553,
+        "cosine_sim": 0.9999997615814209
+      }
+    },
+    "unet_epsilon_response": {
+      "identity_vs_vanilla": {
+        "l2_diff": 0.4157826900482178,
+        "rel_l2": 0.002998315030708909,
+        "cosine_sim": 0.9999958276748657
+      }
+    },
+    "masked_vs_unmasked": {
+      "masked_mean_diff": 0.007822038605809212,
+      "unmasked_mean_diff": 0.0008551180944778025,
+      "masked_ratio": 9.147212746630506
+    },
+    "target_leakage": {
+      "l2_diff": 0.0,
+      "cosine_sim": 1.0000004768371582,
+      "verified_zero_leakage": true
+    },
+    "identity_kv_norms": {
+      "mean_key_norm": 15.652112305164337,
+      "mean_value_norm": 17.697438776493073,
+      "per_layer": [
+        {
+          "layer_name": "down_blocks.0.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.740503311157227,
+          "value_norm": 11.36993408203125,
+          "entropy": 5.527099132537842,
+          "max_prob": 0.015044929459691048
+        },
+        {
+          "layer_name": "down_blocks.0.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.337316513061523,
+          "value_norm": 11.899161338806152,
+          "entropy": 5.535147666931152,
+          "max_prob": 0.009124056436121464
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.660955429077148,
+          "value_norm": 17.145648956298828,
+          "entropy": 5.518690586090088,
+          "max_prob": 0.011956820264458656
+        },
+        {
+          "layer_name": "down_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 15.450672149658203,
+          "value_norm": 16.67021942138672,
+          "entropy": 5.526568412780762,
+          "max_prob": 0.009936478920280933
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.883220672607422,
+          "value_norm": 24.204906463623047,
+          "entropy": 5.518628120422363,
+          "max_prob": 0.015179908834397793
+        },
+        {
+          "layer_name": "down_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.47885513305664,
+          "value_norm": 23.578365325927734,
+          "entropy": 5.511480808258057,
+          "max_prob": 0.01670251227915287
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.5812931060791,
+          "value_norm": 23.65327262878418,
+          "entropy": 5.498568534851074,
+          "max_prob": 0.01843024604022503
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.63307762145996,
+          "value_norm": 23.033519744873047,
+          "entropy": 5.4777750968933105,
+          "max_prob": 0.026535747572779655
+        },
+        {
+          "layer_name": "up_blocks.1.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.921409606933594,
+          "value_norm": 23.275569915771484,
+          "entropy": 5.486645221710205,
+          "max_prob": 0.02356080897152424
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 15.028369903564453,
+          "value_norm": 16.42497444152832,
+          "entropy": 5.4646525382995605,
+          "max_prob": 0.029023565351963043
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.864283561706543,
+          "value_norm": 16.59220314025879,
+          "entropy": 5.507777214050293,
+          "max_prob": 0.017474493011832237
+        },
+        {
+          "layer_name": "up_blocks.2.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 14.641151428222656,
+          "value_norm": 17.10152244567871,
+          "entropy": 5.498334884643555,
+          "max_prob": 0.022463135421276093
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.106545448303223,
+          "value_norm": 11.904349327087402,
+          "entropy": 5.533167362213135,
+          "max_prob": 0.010609536431729794
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.1.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.511431694030762,
+          "value_norm": 11.13060188293457,
+          "entropy": 5.536521911621094,
+          "max_prob": 0.007836593315005302
+        },
+        {
+          "layer_name": "up_blocks.3.attentions.2.transformer_blocks.0.attn2.processor",
+          "key_norm": 10.068954467773438,
+          "value_norm": 11.67131519317627,
+          "entropy": 5.539257049560547,
+          "max_prob": 0.008917762897908688
+        },
+        {
+          "layer_name": "mid_block.attentions.0.transformer_blocks.0.attn2.processor",
+          "key_norm": 20.5257568359375,
+          "value_norm": 23.503456115722656,
+          "entropy": 5.507213115692139,
+          "max_prob": 0.016254156827926636
+        }
+      ]
+    },
+    "identity_attention_stats": {
+      "mean_entropy": 5.5117204785346985,
+      "mean_max_prob": 0.016190672002267092
+    },
+    "nan_inf_detected": false
+  }
+]

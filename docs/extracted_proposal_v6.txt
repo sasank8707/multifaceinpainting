@@ -1,0 +1,457 @@
+=== PAGE 1 ===
+VIT-AP University  ·  School of Computer Science and Engineering  ·  Academic Year 2025–2026
+Computer Vision  ·  Generative AI  ·  Biometric Verification
+Mask-Aware Multi-Reference Fusion
+with Verifier-Aware Sampling
+for Identity-Preserving Facial Inpainting
+TEAM MEMBERS
+Shaik Rehaan Siddiq
+23BCE8750
+Velaga Sasank
+23BCE8707
+Palivela Abhichand
+23BCE9968
+Mahendra Sidhu Chagantipati
+23BCE9056
+PROJECT GUIDE
+Prof. Beebi Naseeba  ·  VIT-AP University
+Research Focus
+Mask-Aware
+Reference Scoring
+Regional Identity -
+Token Fusion
+Quality-Constrained
+Biometric Reranking
+Severe-Occlusion
+Evaluation Protocol
+
+=== PAGE 2 ===
+Introduction — Why Plausible Completion Is Not Enough
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 2
+THE CORE PROBLEM
+•  Facial inpainting reconstructs missing or occluded facial regions in an image.
+•  A perceptually realistic face can represent the wrong person — realism ≠ 
+identity fidelity.
+•  Standard benchmarks (SSIM, PSNR, FID) do not penalise identity drift.
+•  Under severe occlusion (>50% mask), discriminative identity cues vanish from 
+the input.
+•  Biometric systems demand reconstructed faces pass face-verification — not 
+just look good.
+TASK TAXONOMY
+Inpainting: Fills missing/masked regions using surrounding context.
+Restoration: Removes degradation (blur, noise) from an existing complete image.
+Editing: Semantically alters attributes (age, expression, hair) of a face.
+Swapping: Replaces the full identity of one face with another — different person.
+→ This work targets inpainting. The reconstructed region must match the subject's own 
+identity.
+
+=== PAGE 3 ===
+Research Question & Research Gap
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 3
+PRIMARY RESEARCH QUESTION
+Can region-specific evidence from multiple identity references improve biometric fidelity under severe facial occlusion without 
+sacrificing realism?
+Secondary: Can natural-language guidance provide controllable attribute correction during reconstruction?
+RESEARCH GAP — GLOBAL REFERENCE USE IS INSUFFICIENT
+Core gap:  Existing methods use reference identity information globally, even though different references contain unequal evidence for the specific facial region being 
+reconstructed.
+Implication:  A reference showing a different pose may perfectly capture the ear but nothing about the nose — applying it globally dilutes thesignal.
+Missing:  No existing method scores references conditioned on mask geometry before fusing identity tokens.
+Testable:  Identity fidelity should improve as reference relevance to the masked region increases — directly measurable.
+
+=== PAGE 4 ===
+Research Objectives
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 4
+O1 — RETRIEVE
+Score references using pose, quality, visibility, and 
+overlap with the missing facial region.
+▸ Estimate facial pose (yaw, pitch) for each reference.
+▸ Compute face -quality score (sharpness, 
+illumination, occlusion rate).
+▸ Measure landmark visibility within the masked 
+region.
+▸ Score geometric overlap of each reference with the 
+mask.
+▸ Rank references; select top -K per region-of-interest.
+O2 — FUSE
+Construct spatial identity tokens from the most 
+informative reference regions.
+▸ Extract patch -level identity features aligned to 
+landmarks.
+▸ Apply mask-conditioned cross -attention to weight 
+regional tokens.
+▸ Aggregate multi -reference tokens with a learned 
+weighted sum.
+▸ Inject fused identity tokens into the diffusion 
+conditioning path.
+O3 — VERIFY
+Rerank or regenerate candidates using identity, 
+realism, and structural constraints.
+▸ Generate K candidates from the diffusion model.
+▸ Score each on identity similarity (held -out face 
+matcher).
+▸ Score on realism (NIQE / BRISQUE) and structural 
+fidelity.
+▸ Select candidate maximising the joint quality -
+identity score.
+▸ Discard unrealistic images even if matcher similarity 
+is high.
+Note: Text-guided attribute arbitration and inference efficiency are deferred to future work / optional experiments.
+
+=== PAGE 5 ===
+Paper Title Year Method Advantages Limitations
+PATMAT: Person Aware Tuning of Mask-Aware 
+Transformer for Face Inpainting
+2023 Person-Aware Tuning with Mask-Aware 
+Transformer using multiple reference 
+images.
+High-quality face reconstruction with 
+improved identity preservation.
+Requires many reference images for tuning; 
+no diffusion stage or explicit post-
+restoration verification.
+Facial Feature Priors Guided Blind Face 
+Inpainting
+2024 Facial feature priors guide automatic 
+blind face inpainting.
+Automatically identifies degraded regions 
+and restores facial features.
+No explicit multi-reference identity 
+conditioning; limited identity preservation 
+under severe masks.
+Masked Face Inpainting Using Denoising 
+Diffusion Probabilistic Models
+2024 DDPM-based inpainting with U-Net and 
+Fast Fourier Convolution for global 
+context.
+High-quality coherent restoration with 
+reduced edge blurring.
+Computationally demanding; lacks multi-
+reference identity and explicit landmark 
+guidance.
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 5
+Literature Survey - Part 1  (Papers 1-4)
+
+=== PAGE 6 ===
+Paper Title Year Method Advantages Limitations
+Toward Real-World Blind Face Restoration 
+With Generative Diffusion Prior
+2024 BFRffusion uses pretrained Stable 
+Diffusion with low-quality face feature 
+guidance.
+Photorealistic restoration and detailed 
+reconstruction for real-world 
+degradation.
+Primarily single-image restoration; lacks 
+explicit multi-reference identity 
+conditioning.
+Identity-Preserving Diffusion for Face 
+Restoration
+2025 LPIP-Diff models local patch relationships 
+for identity-preserving diffusion 
+restoration.
+Improves restoration quality while 
+maintaining identity consistency.
+Does not explicitly use multi-reference 
+feature fusion or post-restoration identity 
+verification.
+InpaintFormer: Prompt-guided High-Quality 
+Face Inpainting with Mask-Aware Self-
+Attention
+2025 CLIP-guided feature modulation with 
+degradation prediction and mask-aware 
+self-attention.
+Combines semantic prompts with mask-
+aware attention for controlled face 
+inpainting.
+Does not explicitly integrate multi-
+reference identity encoding, landmark 
+guidance, or post-reconstruction identity 
+verification.
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 6
+Literature Survey - Part 2  (Papers 5-8)
+
+=== PAGE 7 ===
+Paper Title Year Method Advantages Limitations
+Towards Authentic Face Restoration with 
+Iterative Diffusion Models and Beyond
+2023 Iterative learned face restoration (IDM) 
+system using progressive denoising steps.
+Iterative refinement produces high 
+authenticity compared to GAN-based 
+models.
+Iterative inference is computationally slow; 
+single degraded image input without 
+reference constraints.
+Diffuse and Restore: A Region-Adaptive 
+Diffusion Model for Identity-Preserving Blind 
+Face Restoration
+2024 Region-adaptive diffusion framework 
+employing an identity-preserving 
+conditioner.
+Excellent perceptual quality and accurate 
+identity preservation on face regions.
+Relies on single-image restoration; does not 
+support multi-reference feature fusion.
+PFStorer: Personalized Face Restoration and 
+Super-Resolution
+2024 Personalization blocks integrated with 
+generative priors to target specific user 
+identities.
+Outstanding fidelity to target individual's 
+features and structural layout 
+consistency.
+Requires fine-tuning blocks per subject or 
+access to target personal anchor codes.
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 7
+Literature Survey - Part 3  (Papers 9-12)
+
+=== PAGE 8 ===
+Paper Title Year Method Advantages Limitations
+WaveFace: Authentic Face Restoration with 
+Efficient Frequency Recovery
+2024 Decomposes images into frequency 
+components; restores low-freq via 
+diffusion and high-freq via unified net.
+Fast (single-step high-frequency 
+restoration) and visually authentic details.
+Frequency-split model lacks explicit multi-
+reference identity conditioning or 
+verification.
+OSDFace: One-Step Diffusion Model for Face 
+Restoration
+2025 One-step diffusion model utilizing a Visual 
+Representation Embedder (VRE) and 
+facial identity loss.
+Extremely fast (one-step inference) with 
+high realism and identity consistency.
+Trained primarily for low-quality 
+restoration rather than large-mask 
+inpainting; lacks multi-ref fusion.
+Robust ID-Specific Face Restoration via 
+Alignment Learning
+2025 Content injection and identity injection 
+modules with multi-reference alignment 
+learning (RIDFR).
+Suppresses identity-irrelevant semantic 
+noise (expression, pose, makeup) during 
+recovery.
+Designed for restoration of low-quality 
+images rather than inpainting; lacks post-
+restoration verification.
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 8
+Literature Survey - Part 4  (Papers 13-16)
+
+=== PAGE 9 ===
+Proposed Architecture - Mask-Aware Multi-Reference Fusion Pipeline
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 9
+INPUT
+Masked Face
++ Mask
++ Multiple
+References
+ANALYSE
+Facial-Region
+Analysis
+(Pose, Landmarks,
+Quality)
+SCORE
+Mask-Aware
+Reference
+Scoring
+(O1 Retrieve)
+FUSE
+Regional
+Identity-Token
+Fusion
+(O2 Fuse)
+SAMPLE x K
+Diffusion
+Generates K
+Candidates
+(stochastic)
+VERIFY & RANK
+Verifier Scores
+Each Candidate
+ID x Quality
+-> Best 1
+VERIFIER-AWARE SAMPLING - Mechanism (Inference-Time Reranking, NOT a Training Loss)
+At inference: diffusion samples K independent outputs (K=8 -16, stochastic). A held -out ArcFace -R100 matcher + NIQE quality estim ator score each candidate. Final output = argmax( 
+lambda*ID_similarity + (1 -lambda)*quality ). The verifier never receives gradients - it is a test-time reranker only.
+KEY DESIGN DECISIONS
+* Mask-conditioned scoring (O1): References scored by geometric overlap with mask - not global quality. T op-K selected per region.
+* Regional token fusion (O2): Patch-level identity features weighted by mask-region relevance via cross-attention; injected into UNet.
+* Verifier-aware sampling (O3) = test-time reranker: K candidates sampled; held-out verifier + quality score select best. No gradient through verifier.
+
+=== PAGE 10 ===
+Novelty & Contributions
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 10
+Mask-aware identity evidence retrieval and verifier-aware candidate selection
+C1
+Mask-Conditioned Reference 
+Scoring
+A scoring function that evaluates each 
+reference for its geometric overlap with 
+the occluded region, conditioning on 
+mask geometry rather than treating all 
+references equally.
+C2
+Regional Identity-Token Fusion
+Patch-level identity features aligned to 
+landmarks, combined via mask -
+conditioned cross -attention to produce 
+spatially-aware identity tokens for 
+diffusion conditioning.
+C3
+Quality-Constrained Biometric 
+Reranking
+Joint scoring by identity fidelity AND 
+perceptual quality, preventing selection 
+of unrealistic images based solely on 
+matcher similarity.
+C4
+Severe-Occlusion Evaluation 
+Protocol
+Systematic benchmark at four mask -
+severity levels (25%, 50%, 75%, full -
+face) with ablations and evaluation 
+using a held-out face matcher.
+Note: We do not claim guaranteed identity preservation. The system maximises identity fidelity under perceptual quality constraints.
+
+=== PAGE 11 ===
+SOFTWARE SPECIFICATIONS
+• Programming Language: Python
+• Deep Learning Framework: PyTorch
+• Image Processing: OpenCV, NumPy
+• Model Architectures: Hugging Face Diffusers & Transformers
+• Biometric Verification: Pretrained face recognition / face 
+embedding frameworks (e.g., ArcFace, Facenet)
+• Development Environment: VS Code / Jupyter Notebooks, 
+CUDA Toolkit
+HARDWARE REQUIREMENTS
+• Graphics Processing Unit: NVIDIA CUDA-compatible GPU
+• Video Memory (VRAM): 8–12 GB VRAM targeted for local 
+experimentation, adapter tuning, and inference
+• System RAM: 16 GB+ RAM
+• Storage: High-speed SSD for dataset loading and model 
+checkpoints
+Implementation Note: Pretrained Transformer/diffusion modules will be 
+adapted or fine-tuned (e.g., via adapters or LoRA) to fit within student-
+accessible GPU resource constraints (8–12 GB VRAM).
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 11
+Software & Hardware Specifications
+
+=== PAGE 12 ===
+CelebA-HQ
+(1024x1024 high -res face images, provides identity metadata 
+to build multi -reference groups)
+CelebAMask -HQ
+(Provides 19 -class segmentation masks for eyes, nose, mouth, 
+skin, hair, and accessories)
+Flickr-Faces-HQ (FFHQ)
+(70k high-quality faces with variations in age, accessories, and 
+background; used for general evaluation)
+EXPERIMENT AL PIPELINE & REFERENCE CONSTRUCTION
+1. Select identities with sufficient suitable images for multi-reference pairing.
+2. Select one image as the ground-truth target and up to three other images as reference inputs.
+3. Apply synthetic masks/occlusions to the target to produce the damaged input.
+4. Use the references to provide identity information under variations in pose, expression, lighting, and viewpoint.
+5. Evaluate reconstructed output against the original ground-truth target.
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 12
+Datasets & Experimental Pipeline
+
+=== PAGE 13 ===
+Evaluation Plan - Identity Fidelity vs. Mask Severity
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 13
+PRIMARY EXPERIMENT
+Identity Fidelity vs. Mask Severity
+Four severity levels:  25%  |  50%  |  75%  |  Full-face
+Full-face: when 100% is masked, identity evidence comes entirely from the reference set, 
+directly testing retrieval and fusion in isolation.
+Metrics & Protocol
+* Identity (ArcFace-R100): Cosine similarity + TAR@FAR=0.1% + AUC of ROC. Matcher is 
+held out - not used in training or A7 selection.
+* FID: Computed over >=5 000 reconstructed vs. ground-truth crops (not vs. training 
+set). Measures distributional realism.
+* NIQE / BRISQUE: No-reference per-image quality. Catches unrealistic outputs that 
+may fool FID.
+* Landmark error: Mean L2 distance (px) between predicted and GT landmarks after 
+reconstruction - structural fidelity measure.
+* CLIP score: Text-guided experiments only: cosine(CLIP(output), CLIP(prompt)). 
+Evaluates attribute preservation (e.g. 'wearing glasses').
+ABLA TION CONDITIONS
+A1  Single reference (random)
+A2  Random multi-reference, no scoring
+A3  Globally best reference (quality, no mask-aware)
+A4  Mean multi-reference fusion (equal weights)
+A5  Global attention fusion (no mask conditioning)
+A6  Proposed mask-aware regional fusion, no verifier
+A7  Proposed fusion + verifier-aware sampling  [FULL]
+Held-out matcher: ArcFace-R100 (MS1MV3) - NOT used in training loss or A7 selection.
+Verification: reconstructed face vs. >=3 withheld references per identity. Report cosine sim + 
+TAR@FAR=0.1% + AUC.
+
+=== PAGE 14 ===
+Implementation Strategy — Three-Review Plan
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 14
+Review 1
+(Month 1–3)
+Retrieve Module
+▸ Implement mask geometry analyser
+▸ Build reference scoring pipeline (pose + quality 
++ overlap)
+▸ Validate scoring on CelebA-HQ with synthetic 
+masks
+▸ Baseline: single-reference ArcFace-conditioned 
+inpainting
+Review 2
+(Month 4–7)
+Fuse Module
+▸ Implement patch-level identity encoder
+▸ Build mask-conditioned cross-attention fusion
+▸ Integrate fused tokens into diffusion UNet 
+conditioning
+▸ Ablations A1–A5 completed
+Review 3
+(Month 7–10)
+Verify Module
+▸ Build verifier-aware candidate selection (A7)
+▸ Tune joint identity × quality scoring policy
+▸ Run primary experiment across 4 mask-severity 
+levels
+▸ Evaluate with held-out matcher; compile final 
+results
+
+=== PAGE 15 ===
+Project Timeline — 10 Months
+Mask-Aware Multi-Reference Fusion  |  Identity -Preserving Facial Inpainting 15
+M1–2
+Dataset Setup
+& Baselines
+M3
+Mask-Aware
+Scoring
+M4–5
+Identity
+Encoder
+& Fusion
+M6–7
+Diffusion
+Integration
+& Ablations
+M8
+Verifier-Aware
+Selection
+M9
+Primary
+Experiment
+& Eval
+M10
+Paper Writing
+& Submission
+Review milestones:   Review 1 → End of M3   |   Review 2 → End of M7   |   Review 3 → End of M10
+DELIVERABLES PER REVIEW
+Review 1:  Scored reference retrieval + baseline comparison (A1 vs A3). Dataset preprocessing complete.
+Review 2:  Full Retrieve + Fuse modules. Ablations A1–A5 on CelebA-HQ at 50% mask severity.
+Review 3:  Complete proposed system (A7). Primary experiment across 4 severity levels. Held-out matcher evaluation. Draft paper .
+

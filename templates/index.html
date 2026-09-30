@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Restoration</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <div class="header-inner">
+            <h1>AI Image Restoration</h1>
+            <p class="subtitle">A multi-mode image restoration college project</p>
+            <span class="sr-only">Multi-Mode AI Image Restoration</span>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <!-- Single Mode Navigation Bar -->
+        <nav class="mode-nav">
+            <button type="button" class="mode-btn active" data-mode="mode1">
+                <span class="mode-btn-title">Face Restoration</span>
+                <span class="mode-btn-desc">Restore damaged facial regions</span>
+            </button>
+            <button type="button" class="mode-btn" data-mode="mode2">
+                <span class="mode-btn-title">Background Removal</span>
+                <span class="mode-btn-desc">Remove the background</span>
+            </button>
+            <button type="button" class="mode-btn" data-mode="mode3">
+                <span class="mode-btn-title">Deblurring</span>
+                <span class="mode-btn-desc">Improve blurry images</span>
+            </button>
+        </nav>
+
+        <!-- ==================================================================== -->
+        <!-- MODE 1: FACE RESTORATION -->
+        <!-- ==================================================================== -->
+        <section id="mode1" class="mode-panel active">
+            <div class="section-intro">
+                <h2>FACE INPAINTING & RESTORATION</h2>
+                <p class="section-subtitle">Restore a damaged or missing facial region.</p>
+                <span class="sr-only">Mode 1: Face Inpainting & Face Restoration</span>
+            </div>
+
+            <!-- Question: What kind of image do you have? -->
+            <div class="question-card">
+                <span class="question-label">WHAT KIND OF IMAGE DO YOU HAVE?</span>
+                <div class="choice-group">
+                    <button type="button" class="choice-btn active" id="btn_choice_path_a">
+                        <span class="choice-title">I know the area to restore</span>
+                        <span class="choice-sub">Upload an image and provide or draw the area to restore</span>
+                    </button>
+                    <button type="button" class="choice-btn" id="btn_choice_path_b">
+                        <span class="choice-title">My face has natural damage</span>
+                        <span class="choice-sub">Upload a damaged face photo. The system will detect damage automatically</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Inline validation messages -->
+            <div id="m1_error" class="msg-box error-box hidden"></div>
+            <div id="m1_info" class="msg-box info-box hidden"></div>
+
+            <div class="two-col-grid">
+                <!-- Left Column: Controls & Steps -->
+                <div class="controls-column">
+                    <!-- ================= OPTION A: I KNOW THE AREA ================= -->
+                    <div id="path_a_section">
+                        <!-- STEP 1: Target Image -->
+                        <div class="step-card">
+                            <span class="step-badge">STEP 1</span>
+                            <h3 class="step-title">Face image to restore</h3>
+                            <p class="step-desc">Upload the face image you want to restore. For a masked/missing region, upload the image containing that damaged or missing area.</p>
+                            <div class="upload-row">
+                                <input type="file" id="m1_a_target_file" accept="image/*">
+                            </div>
+                            <div id="m1_a_target_preview" class="thumb-row hidden">
+                                <img id="m1_a_target_thumb" class="preview-thumb" src="" alt="Face to restore">
+                                <div class="thumb-meta">
+                                    <span id="m1_a_target_name" class="meta-filename"></span>
+                                    <span id="m1_a_target_dim" class="meta-dimensions"></span>
+                                </div>
+                                <button type="button" class="btn-remove" id="m1_a_target_remove">Remove</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Region to Restore (Upload or Draw) -->
+                        <div class="step-card">
+                            <span class="step-badge">STEP 2</span>
+                            <h3 class="step-title">Region to restore</h3>
+                            <p class="step-desc">Specify the facial region you want the AI to reconstruct.</p>
+
+                            <!-- Sub-Mode Switcher: Upload vs Draw -->
+                            <div class="mask-method-tabs">
+                                <button type="button" class="tab-btn active" id="tab_mask_upload">Upload Existing Mask</button>
+                                <button type="button" class="tab-btn" id="tab_mask_draw">Draw Mask</button>
+                            </div>
+
+                            <!-- Sub-Option A1: Upload Existing Mask -->
+                            <div id="sub_mask_upload" class="mask-subpanel">
+                                <div class="mask-legend">
+                                    <span class="legend-chip"><span class="swatch white-swatch"></span> WHITE = Reconstruct</span>
+                                    <span class="legend-chip"><span class="swatch black-swatch"></span> BLACK = Preserve</span>
+                                </div>
+                                <div class="upload-row">
+                                    <input type="file" id="m1_a_mask_file" accept="image/*">
+                                </div>
+                                <div id="m1_a_mask_preview" class="thumb-row hidden">
+                                    <img id="m1_a_mask_thumb" class="preview-thumb" src="" alt="Mask preview">
+                                    <div class="thumb-meta">
+                                        <span id="m1_a_mask_name" class="meta-filename"></span>
+                                        <span id="m1_a_mask_dim" class="meta-dimensions"></span>
+                                    </div>
+                                    <button type="button" class="btn-remove" id="m1_a_mask_remove">Remove</button>
+                                </div>
+                            </div>
+
+                            <!-- Sub-Option A2: Draw Mask Directly -->
+                            <div id="sub_mask_draw" class="mask-subpanel hidden">
+                                <div class="draw-instruction-banner">
+                                    Paint over the part you want the AI to reconstruct.
+                                </div>
+
+                                <div id="draw_no_target_msg" class="info-note">
+                                    Please upload a face image in Step 1 first to draw on it.
+                                </div>
+
+                                <div id="draw_canvas_wrapper" class="draw-canvas-container hidden">
+                                    <canvas id="mask_draw_canvas" class="paint-canvas"></canvas>
+
+                                    <!-- Drawing Toolbar -->
+                                    <div class="draw-toolbar">
+                                        <div class="tool-group">
+                                            <label for="brush_size_slider">Brush Size: <span id="brush_size_label">24</span>px</label>
+                                            <input type="range" id="brush_size_slider" min="6" max="72" value="24">
+                                        </div>
+                                        <div class="tool-group">
+                                            <button type="button" class="btn btn-tool active" id="btn_tool_brush">Brush (Paint)</button>
+                                            <button type="button" class="btn btn-tool" id="btn_tool_eraser">Eraser</button>
+                                        </div>
+                                        <div class="tool-group">
+                                            <button type="button" class="btn btn-outline-sm" id="btn_draw_undo">Undo</button>
+                                            <button type="button" class="btn btn-outline-sm" id="btn_draw_clear">Clear</button>
+                                            <button type="button" class="btn btn-outline-sm" id="btn_draw_reset">Reset</button>
+                                        </div>
+                                        <button type="button" class="btn btn-primary-sm" id="btn_draw_confirm">Use Mask</button>
+                                    </div>
+                                </div>
+
+                                <!-- Confirmed Drawn Mask Card -->
+                                <div id="drawn_mask_confirmed" class="thumb-row hidden" style="margin-top: 10px;">
+                                    <img id="drawn_mask_thumb" class="preview-thumb" src="" alt="Drawn mask preview">
+                                    <div class="thumb-meta">
+                                        <span class="meta-filename">Custom Drawn Mask</span>
+                                        <span id="drawn_mask_dim" class="meta-dimensions"></span>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-sm" id="btn_redraw">Edit / Redraw</button>
+                                    <button type="button" class="btn-remove" id="btn_drawn_remove">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= OPTION B: NATURAL FACIAL DAMAGE ================= -->
+                    <div id="path_b_section" class="hidden">
+                        <!-- STEP 1: Damaged Face Image -->
+                        <div class="step-card">
+                            <span class="step-badge">STEP 1</span>
+                            <h3 class="step-title">Naturally damaged face</h3>
+                            <p class="step-desc">Upload a photo containing localized visible facial damage such as burns, scars, scratches, or damaged skin.</p>
+                            <div class="upload-row">
+                                <input type="file" id="m1_b_target_file" accept="image/*">
+                            </div>
+                            <div id="m1_b_target_preview" class="thumb-row hidden">
+                                <img id="m1_b_target_thumb" class="preview-thumb" src="" alt="Damaged face">
+                                <div class="thumb-meta">
+                                    <span id="m1_b_target_name" class="meta-filename"></span>
+                                    <span id="m1_b_target_dim" class="meta-dimensions"></span>
+                                </div>
+                                <button type="button" class="btn-remove" id="m1_b_target_remove">Remove</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Automatic Damage Detection -->
+                        <div class="step-card">
+                            <span class="step-badge">STEP 2</span>
+                            <h3 class="step-title">Damage Detection</h3>
+                            <p class="step-desc">Analyze the face and detect the localized damaged area automatically using color and texture anomaly mapping.</p>
+                            <button type="button" class="btn btn-secondary" id="m1_b_detect_btn">Detect Damage</button>
+
+                            <div id="m1_b_detect_preview" class="detected-area-card hidden">
+                                <span class="detected-badge">Detected area to restore</span>
+                                <div class="detected-row">
+                                    <img id="m1_b_detect_thumb" class="preview-thumb" src="" alt="Detected damage overlay">
+                                    <div class="detected-details">
+                                        <p id="m1_b_detect_stats" class="text-sm font-semibold"></p>
+                                        <p class="text-xs text-muted">Red overlay indicates the detected damage area for neural restoration.</p>
+                                    </div>
+                                </div>
+                                <div class="detected-actions">
+                                    <button type="button" class="btn btn-success-sm" id="btn_b_use_detected">Use Detected Area</button>
+                                    <button type="button" class="btn btn-outline-sm" id="btn_b_adjust_mask">Adjust Mask</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Identity References (Shared between Options) -->
+                    <div class="step-card">
+                        <span class="step-badge">STEP 3</span>
+                        <h3 class="step-title">Identity references (optional)</h3>
+                        <p class="step-desc">Optional: add 1–3 clear photos of the same person to help preserve identity.</p>
+
+                        <div class="ref-control-row">
+                            <button type="button" class="btn btn-outline" id="m1_add_ref_btn">+ Add Reference Photo</button>
+                            <button type="button" class="btn btn-link hidden" id="m1_clear_refs_btn">Clear All References</button>
+                        </div>
+                        <div id="m1_ref_error" class="msg-box error-box hidden" style="margin-top: 8px; padding: 6px 10px; font-size: 0.85rem;"></div>
+
+                        <!-- Dynamic list of appended references -->
+                        <div id="m1_ref_list" class="ref-list" style="margin-top: 10px;"></div>
+                    </div>
+
+                    <!-- STEP 4: Restoration Action & Real Progress -->
+                    <div class="step-card">
+                        <span class="step-badge">STEP 4</span>
+                        <h3 class="step-title">Restoration</h3>
+
+                        <!-- Progress Display (Real Diffusion Steps) -->
+                        <div id="m1_progress_container" class="progress-box hidden">
+                            <div class="progress-header">
+                                <span class="progress-title">Restoring face...</span>
+                                <span id="m1_progress_pct" class="progress-pct">0%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div id="m1_progress_bar" class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <p id="m1_progress_msg" class="progress-status-msg">Preparing image...</p>
+                        </div>
+
+                        <!-- Automatic Fallback Warning Card -->
+                        <div id="m1_fallback_card" class="fallback-box hidden">
+                            <h4>The selected region was not reconstructed sufficiently.</h4>
+                            <p>The neural restoration could not reliably reconstruct the chosen region with the provided mask.</p>
+                            <button type="button" class="btn btn-warning" id="btn_trigger_auto_fallback">Try Automatic Damage Detection</button>
+                        </div>
+
+                        <div id="path_a_actions">
+                            <p class="step-desc">Choose demonstration preview or full neural restoration:</p>
+                            <div class="btn-stack">
+                                <button type="button" class="btn btn-secondary" id="m1_run_preview_btn">
+                                    Quick Preview &mdash; demonstration only
+                                    <span class="btn-sub">Verifies inputs and mask contour</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="m1_run_full_btn">
+                                    Full Restoration &mdash; 50 diffusion steps
+                                    <span class="btn-sub">Authentic neural pipeline with Step 150 identity conditioning</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="path_b_actions" class="hidden">
+                            <p class="step-desc">Restore the detected damaged region:</p>
+                            <div class="btn-stack">
+                                <button type="button" class="btn btn-secondary" id="m1_b_preview_btn">
+                                    Quick Preview &mdash; demonstration only
+                                </button>
+                                <button type="button" class="btn btn-primary" id="m1_b_restore_btn">
+                                    Restore Face &mdash; 50 diffusion steps
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Output & Result -->
+                <div class="results-column">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h3>Restoration Result</h3>
+                            <div id="m1_view_switches" class="view-switches hidden">
+                                <button type="button" class="switch-btn active" data-view="result">Result</button>
+                                <button type="button" class="switch-btn" data-view="original">Original</button>
+                                <button type="button" class="switch-btn" data-view="mask">Mask</button>
+                            </div>
+                        </div>
+
+                        <div class="display-box" id="m1_display_box">
+                            <div class="empty-state" id="m1_empty_msg">
+                                <p>Your restored image will appear here.</p>
+                            </div>
+                            <img id="m1_result_img" class="hidden" src="" alt="Restoration result">
+                        </div>
+
+                        <div id="m1_status_panel" class="status-panel hidden">
+                            <p id="m1_status_text" class="status-text font-semibold"></p>
+                            <p id="m1_regen_text" class="audit-text"></p>
+                            <p id="m1_audit_text" class="audit-text"></p>
+                            <p class="audit-footnote">* Region regenerated indicates the percentage of the selected reconstruction mask changed by the restoration process.</p>
+                        </div>
+
+                        <div class="action-footer">
+                            <button type="button" class="btn btn-success hidden" id="m1_download_btn">Download Restored Image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- MODE 2: BACKGROUND REMOVAL -->
+        <!-- ==================================================================== -->
+        <section id="mode2" class="mode-panel">
+            <div class="section-intro">
+                <h2>Mode 2: Background Removal</h2>
+                <p class="section-subtitle">Removes the background and creates a transparent PNG.</p>
+            </div>
+
+            <div id="m2_error" class="msg-box error-box hidden"></div>
+
+            <div class="two-col-grid">
+                <div class="controls-column">
+                    <div class="step-card">
+                        <h3 class="step-title">Upload Image</h3>
+                        <p class="step-desc">Select a photo containing a person or object.</p>
+                        <div class="upload-row">
+                            <input type="file" id="m2_file" accept="image/*">
+                        </div>
+                        <div id="m2_preview" class="thumb-row hidden">
+                            <img id="m2_thumb" class="preview-thumb" src="" alt="Input photo">
+                            <div class="thumb-meta">
+                                <span id="m2_name" class="meta-filename"></span>
+                            </div>
+                            <button type="button" class="btn-remove" id="m2_remove">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <button type="button" class="btn btn-primary" id="m2_run_btn">Remove Background</button>
+                    </div>
+                </div>
+
+                <div class="results-column">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h3>Result</h3>
+                            <div id="m2_view_switches" class="view-switches hidden">
+                                <button type="button" class="switch-btn active" data-view="result">Transparent Result</button>
+                                <button type="button" class="switch-btn" data-view="original">Original</button>
+                            </div>
+                        </div>
+
+                        <div class="display-box checkerboard" id="m2_display_box">
+                            <div class="empty-state" id="m2_empty_msg">
+                                <p>Your transparent cutout will appear here.</p>
+                            </div>
+                            <img id="m2_result_img" class="hidden" src="" alt="Transparent cutout">
+                        </div>
+
+                        <div class="action-footer">
+                            <button type="button" class="btn btn-success hidden" id="m2_download_btn">Download PNG</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- MODE 3: DEBLURRING -->
+        <!-- ==================================================================== -->
+        <section id="mode3" class="mode-panel">
+            <div class="section-intro">
+                <h2>Mode 3: Edge-Preserving Deblurring</h2>
+                <p class="section-subtitle">Improves clarity and sharpness in blurry images.</p>
+            </div>
+
+            <div id="m3_error" class="msg-box error-box hidden"></div>
+
+            <div class="two-col-grid">
+                <div class="controls-column">
+                    <div class="step-card">
+                        <h3 class="step-title">Upload Blurry Image</h3>
+                        <p class="step-desc">Select an image that lacks sharpness or focus.</p>
+                        <div class="upload-row">
+                            <input type="file" id="m3_file" accept="image/*">
+                        </div>
+                        <div id="m3_preview" class="thumb-row hidden">
+                            <img id="m3_thumb" class="preview-thumb" src="" alt="Blurry image">
+                            <div class="thumb-meta">
+                                <span id="m3_name" class="meta-filename"></span>
+                            </div>
+                            <button type="button" class="btn-remove" id="m3_remove">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <button type="button" class="btn btn-primary" id="m3_run_btn">Deblur Image</button>
+                    </div>
+                </div>
+
+                <div class="results-column">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h3>Result</h3>
+                            <div id="m3_view_switches" class="view-switches hidden">
+                                <button type="button" class="switch-btn active" data-view="result">Restored</button>
+                                <button type="button" class="switch-btn" data-view="original">Original</button>
+                            </div>
+                        </div>
+
+                        <div class="display-box" id="m3_display_box">
+                            <div class="empty-state" id="m3_empty_msg">
+                                <p>Your deblurred image will appear here.</p>
+                            </div>
+                            <img id="m3_result_img" class="hidden" src="" alt="Deblurred result">
+                        </div>
+
+                        <div class="action-footer">
+                            <button type="button" class="btn btn-success hidden" id="m3_download_btn">Download Image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- RESEARCH / TECHNICAL DETAILS (Collapsible Section at Bottom) -->
+        <!-- ==================================================================== -->
+        <footer class="page-footer">
+            <details class="tech-details">
+                <summary>Research & Technical Details</summary>
+                <div class="tech-content">
+                    <h4>Architecture & Implementation Details</h4>
+                    <ul>
+                        <li><strong>Mode 1 (Face Inpainting & Restoration):</strong> Driven by a Stable Diffusion 1.5 inpainting backbone conditioned on ArcFace identity embeddings via a frozen <strong>Step 150</strong> Decoupled Identity Cross-Attention adapter. Includes O1 Mask-Aware Reference Quality Scoring and O2 Regional Identity Token Fusion across up to 3 references.</li>
+                        <li><strong>Automatic Damage Detection:</strong> LocalizedDamageDetector_v2 combining LAB color anomaly mapping and multi-scale texture deviations with facial landmark shielding for orbital and lip preservation.</li>
+                        <li><strong>Boundary Harmonization & Invariance:</strong> Inward feathering ($r = 7\text{ px}$) composited strictly inside the damage mask, guaranteeing mathematical invariance ($\Delta_{\max} = 0.0$, 0 changed pixels) on unmasked canvas pixels.</li>
+                        <li><strong>Known Limitation:</strong> Deep interior microtexture of large synthesized damage patches exhibits smoother synthetic skin (documented baseline limitation, preserved without ad-hoc sharpening).</li>
+                        <li><strong>Mode 2 (Background Removal):</strong> Pretrained LRASPP MobileNetV3-Large segmentation backbone generating transparent RGBA PNG cutouts with bit-exact original RGB pixels.</li>
+                        <li><strong>Mode 3 (Deblurring):</strong> Multi-scale edge-preserving bilateral detail decomposition with adaptive gradient sharpening and contrast enhancement.</li>
+                    </ul>
+                </div>
+            </details>
+            <p class="project-credit">Computer Science & Engineering &bull; Final Project Demonstration</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js?v=20260930_2"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "device": "cpu",
+  "timing_seconds": {
+    "part1": 9.717625141143799,
+    "part2": 2.5427470207214355,
+    "part3": 108.4126341342926
+  },
+  "part1_identity_anti_leakage": {
+    "target_hq": 7367,
+    "target_id": "3111",
+    "ref_a_hqs": [
+      13401,
+      23058,
+      23414
+    ],
+    "ref_b_hqs": [
+      5447,
+      6008,
+      7695
+    ],
+    "ref_c_hqs": [
+      5447,
+      24194,
+      11500
+    ],
+    "sim_fused_ab": 0.9999972581863403,
+    "sim_fused_ac": 0.9999936819076538,
+    "sim_fused_bc": 0.999999463558197,
+    "sim_cond_ab": 1.0000063180923462,
+    "sim_cond_ac": 1.0000044107437134,
+    "sim_id_ab": 0.9999985694885254,
+    "sim_id_ac": 0.9999967217445374,
+    "probe_a_vs_target": 0.006741735152900219,
+    "probe_b_vs_target": 0.006699938327074051,
+    "probe_c_vs_target": 0.006657678633928299,
+    "probe_a_vs_refa": 0.007726327516138554,
+    "probe_b_vs_refb": 0.0162129458039999,
+    "probe_c_vs_refc": 0.020305823534727097,
+    "gt_target_vs_refa": 0.9970212578773499,
+    "gt_target_vs_refb": 0.94228595495224,
+    "mean_diff_ab_inside_mask": 0.06223521754145622,
+    "mean_diff_ab_outside_mask": 0.06230200082063675,
+    "mean_diff_ac_inside_mask": 0.0879216343164444,
+    "mean_diff_ac_outside_mask": 0.08801281452178955,
+    "num_masked_patches": 21,
+    "num_unmasked_patches": 235
+  },
+  "part2_coarse_reconstructor_validation": {
+    "val_hq": 3616,
+    "val_id": "3330",
+    "std_gt": 74.05386434036457,
+    "std_untrained": 69.55812492112571,
+    "std_trained": 87.92382946358596,
+    "mean_rgb_gt": [
+      170.57283860354596,
+      140.61195393895082,
+      119.23944434289892
+    ],
+    "mean_rgb_untrained": [
+      79.15024675562054,
+      204.2749040394809,
+      78.82708828367757
+    ],
+    "mean_rgb_trained": [
+      65.21001645037471,
+      155.8066167062694,
+      192.9384024858344
+    ],
+    "lap_energy_gt": 0.24180665612220764,
+    "lap_energy_untrained": 1.956795334815979,
+    "lap_energy_trained": 3.783324956893921,
+    "diff_border_untrained": 0.34275618374558303,
+    "diff_border_trained": 0.34275618374558303,
+    "vis_path": "C:\\Users\\sasan\\Desktop\\multifaceinpainting\\checkpoints\\coarse_reconstructor\\held_out_validation_comparison.png"
+  },
+  "part3_unet_single_forward_integration": {
+    "timestep": 500,
+    "seed": 42,
+    "input_standard_shape": [
+      1,
+      9,
+      64,
+      64
+    ],
+    "input_guided_shape": [
+      1,
+      9,
+      64,
+      64
+    ],
+    "diff_vanilla_vs_id": 3.831942558288574,
+    "sim_vanilla_vs_id": 0.9996271133422852,
+    "diff_id_vs_coarse": 13.163082122802734,
+    "sim_id_vs_coarse": 0.9955511093139648,
+    "delta_eps_swap_ab": 0.001311896601691842,
+    "sim_swap_ab": 1.000000238418579,
+    "delta_eps_swap_inside_mask": 0.0011477236403152347,
+    "delta_eps_swap_outside_mask": 0.0006354587385430932
+  }
+}
